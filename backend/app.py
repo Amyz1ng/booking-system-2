@@ -63,7 +63,7 @@ def create_table():
                 print("Error creating table:", error)
 
 def insert_data_in_db(name, email, number_of_people, date, time, booking_information):
-    connection = connect()
+    connection = get_connection()
     cursor = connection.cursor()
 
     try:
