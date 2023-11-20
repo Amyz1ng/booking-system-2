@@ -1,4 +1,4 @@
 Flask==2.0.1
 Flask-Cors==1.10.3
-psycopg2==2.9.8
+psycopg2==2.8.7
 Werkzeug==2.0.2
