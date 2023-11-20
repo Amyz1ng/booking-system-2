@@ -5,7 +5,13 @@ from flask_cors import CORS
 import os  # Import os module for environment variables
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for your app
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    # Other CORS headers if needed
+    # ...
+    return response
 
 # Connection parameters
 dbname = 'cdkgoyuf'
