@@ -99,3 +99,5 @@ def insert_data():
 if __name__ == '__main__':
     print(app.url_map)
     create_table()  # Create the table if it doesn't exist
+    port = int(os.environ.get("PORT", 5000))  # Use port from environment variable or 5000 if not set
+    app.run(host='0.0.0.0', port=port)
