@@ -63,19 +63,22 @@ def create_table():
                 print("Error creating table:", error)
 
 def insert_data_in_db(name, email, number_of_people, date, time, booking_information):
-    connection = get_connection()
-    if connection:
-        with connection.cursor() as cursor:
-            try:
-                insert_query = '''
-                INSERT INTO Reservation (name, email, number_of_people, date, time, booking_information)
-                VALUES (%s, %s, %s, %s, %s, %s)
-                '''
-                cursor.execute(insert_query, (name, email, number_of_people, date, time, booking_information))
-                connection.commit()
-                print("Data inserted successfully")
-            except (Exception, Error) as error:
-                print("Error inserting data:", error)
+    connection = connect()
+    cursor = connection.cursor()
+
+    try:
+        insert_query = '''
+        INSERT INTO Reservation (name, email, number_of_people, date, time, booking_information)
+        VALUES (%s, %s, %s, %s, %s, %s)
+        '''
+
+        cursor.execute(insert_query, (name, email, number_of_people, date, time, booking_information))
+        connection.commit()
+        print("Data inserted successfully")
+    except (Exception, Error) as error:
+        print("Error inserting data:", error)
+    finally:
+        close_connection(connection, cursor)
 
 @app.route('/insert', methods=['POST'])
 def insert_data():
@@ -89,7 +92,7 @@ def insert_data():
         time = data.get('time')
         booking_information = data.get('booking_information')
 
-        # insert_data_in_db(name, email, number_of_people, date, time, booking_information)
+        insert_data_in_db(name, email, number_of_people, date, time, booking_information)
 
         return jsonify({'message': 'Insert operation successful'})
     except Exception as e:
