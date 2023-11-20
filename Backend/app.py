@@ -2,18 +2,10 @@ from flask import Flask, request, jsonify
 import psycopg2
 from psycopg2 import Error
 from flask_cors import CORS
+import os  # Import os module for environment variables
 
 app = Flask(__name__)
-
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    # Other CORS headers if needed
-    # ...
-    return response
-
-
+CORS(app)  # Enable CORS for your app
 
 # Connection parameters
 dbname = 'cdkgoyuf'
@@ -88,26 +80,24 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
     finally:
         close_connection(connection, cursor)
 
+# API route to handle insertion of data
 @app.route('/insert', methods=['POST'])
 def insert_data():
-    print('teststuff')
-    name = request.json.get('name')
-    email = request.json.get('email')
-    number_of_people = request.json.get('number_of_people')
-    date = request.json.get('date')
-    time = request.json.get('time')
-    booking_information = request.json.get('booking_information')
+    data = request.json  # Get JSON data from the request
+    name = data.get('name')
+    email = data.get('email')
+    number_of_people = data.get('number_of_people')
+    date = data.get('date')
+    time = data.get('time')
+    booking_information = data.get('booking_information')
 
     insert_data_in_db(name, email, number_of_people, date, time, booking_information)
 
     return jsonify({'message': 'Insert operation successful'})
 
+# Run the app if executed directly
 if __name__ == '__main__':
     print(app.url_map)
     create_table()  # Create the table if it doesn't exist
-    app.run(debug=True)
-    app.run(port=5000)
-
-
-
-
+    port = int(os.environ.get('PORT', 5000))  # Get the port from the environment variable
+    app.run(debug=True, host='0.0.0.0', port=port)  # Start the Flask application
