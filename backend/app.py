@@ -9,8 +9,6 @@ app = Flask(__name__)
 def add_cors_headers(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    # Other CORS headers if needed
-    # ...
     return response
 
 # Connection parameters for ElephantSQL (replace with your credentials)
