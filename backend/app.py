@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, g
+from flask import Flask, request, jsonify
 import psycopg2
 from psycopg2 import Error
 from flask_cors import CORS
