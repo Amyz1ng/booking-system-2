@@ -92,6 +92,7 @@ def insert_data():
     #     return jsonify({'message': 'Insert operation successful'})
     # except Exception as e:
     #     return jsonify({'error': str(e)})
+    return "test"
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
