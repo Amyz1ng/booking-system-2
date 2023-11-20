@@ -99,5 +99,3 @@ def insert_data():
 if __name__ == '__main__':
     print(app.url_map)
     create_table()  # Create the table if it doesn't exist
-    port = int(os.environ.get('PORT', 5000))  # Get the port from the environment variable
-    app.run(debug=True, host='0.0.0.0', port=port)  # Start the Flask application
