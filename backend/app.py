@@ -72,7 +72,7 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
 
 @app.route('/insert', methods=['POST'])
 def insert_data():
-    create_table()
+    # create_table()
     # data = request.json
     # name = data.get('name')
     # email = data.get('email')
