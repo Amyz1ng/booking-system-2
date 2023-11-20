@@ -5,7 +5,7 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/insert": {"origins": "https://amyz1ng.github.io"}})
+CORS(app)
 
 # Connection parameters for ElephantSQL (replace with your credentials)
 dbname = 'cdkgoyuf'
@@ -71,21 +71,22 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
                 print("Error inserting data:", error)
 
 @app.route('/insert', methods=['POST'])
-def insert_data():
-    data = request.json
-    name = data.get('name')
-    email = data.get('email')
-    number_of_people = data.get('number_of_people')
-    date = data.get('date')
-    time = data.get('time')
-    booking_information = data.get('booking_information')
+    def insert_data():
 
-    insert_data_in_db(name, email, number_of_people, date, time, booking_information)
+    # data = request.json
+    # name = data.get('name')
+    # email = data.get('email')
+    # number_of_people = data.get('number_of_people')
+    # date = data.get('date')
+    # time = data.get('time')
+    # booking_information = data.get('booking_information')
 
-    return jsonify({'message': 'Insert operation successful'})
+    # insert_data_in_db(name, email, number_of_people, date, time, booking_information)
+
+    # return jsonify({'message': 'Insert operation successful'})
 
 if __name__ == '__main__':
-    create_table()  # Create the table if it doesn't exist
+    # create_table()
 
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
