@@ -90,7 +90,7 @@ def insert_data():
         time = data.get('time')
         booking_information = data.get('booking_information')
 
-        insert_data_in_db(name, email, number_of_people, date, time, booking_information)
+        create_table()
 
         return jsonify({'message': 'Insert operation successful'})
     except Exception as e:
