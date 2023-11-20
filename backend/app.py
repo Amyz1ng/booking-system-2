@@ -5,12 +5,12 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
+
 @app.after_request
 def add_cors_headers(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     return response
-
 
 # Connection parameters for ElephantSQL (replace with your credentials)
 dbname = 'cdkgoyuf'
@@ -91,7 +91,5 @@ def insert_data():
     # return jsonify({'message': 'Insert operation successful'})
 
 if __name__ == '__main__':
-    # create_table()
-
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
