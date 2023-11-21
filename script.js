@@ -56,7 +56,7 @@ function book() {
     booking_information: document.getElementById('bookinginfomation').value
   };
 
-  fetch('https://amyz1ng.github.io/Book-System-Backend/insert', {
+  fetch('https://bookingsystem2-9ca46070b498.herokuapp.com/insert', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
