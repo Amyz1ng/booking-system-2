@@ -87,7 +87,20 @@ def insert_data():
         time = data.get('time')
         booking_information = data.get('booking_information')
 
-        create_table()
+            connection = get_connection()
+    if connection:
+        with connection.cursor() as cursor:
+            try:
+                insert_query = '''
+                INSERT INTO Reservation (name, email, number_of_people, date, time, booking_information)
+                VALUES (%s, %s, %s, %s, %s, %s)
+                '''
+
+                cursor.execute(insert_query, (name, email, number_of_people, date, time, booking_information))
+                connection.commit()
+                print("Data inserted successfully")
+            except (Exception, Error) as error:
+                print("Error inserting data:", error)
 
         return jsonify({'message': 'Insert operation successful'})
     except Exception as e:
