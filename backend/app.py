@@ -79,12 +79,14 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
                 cursor.execute(insert_query, (name, email, number_of_people, date, time, booking_information))
                 connection.commit()
                 print("Data inserted successfully")
+                return True  # Return True on success
             except (Exception, Error) as error:
                 print("Error inserting data:", error)
+                return False  # Return False on failure
+
 
 @app.route('/insert', methods=['POST', 'OPTIONS'])
 def insert_data():
-    print('testr')
     try:
         data = request.json
         name = data.get('name')
@@ -94,24 +96,19 @@ def insert_data():
         time = data.get('time')
         booking_information = data.get('booking_information')
 
-        connection = get_connection()
-        if connection:
-            with connection.cursor() as cursor:
-                try:
-                    insert_query = '''
-                    INSERT INTO Reservation (name, email, number_of_people, date, time, booking_information)
-                    VALUES (%s, %s, %s, %s, %s, %s)
-                    '''
+        success = insert_data_in_db(name, email, number_of_people, date, time, booking_information)
+        if success:
+            response = jsonify({'message': 'Insert operation successful'})
+        else:
+            response = jsonify({'error': 'Failed to insert data'})
 
-                    cursor.execute(insert_query, (name, email, number_of_people, date, time, booking_information))
-                    connection.commit()
-                    print("Data inserted successfully")
-                    return jsonify({'message': 'Insert operation successful'})
-                except (Exception, Error) as error:
-                    print("Error inserting data:", error)
-                    return jsonify({'error': str(error)})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+
     except Exception as e:
-        return jsonify({'error': str(e)})
+        response = jsonify({'error': str(e)})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
 
 
 if __name__ == '__main__':
