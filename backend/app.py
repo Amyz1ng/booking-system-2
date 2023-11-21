@@ -35,6 +35,7 @@ def close_connection(exception):
         connection.close()
 
 def create_table():
+    print("test")
     connection = get_connection()
     print(connection)
     if connection:
@@ -54,6 +55,7 @@ def create_table():
                 cursor.execute(create_table_query)
                 connection.commit()
                 print("Table created successfully")
+                return "Table created successfully"
             except (Exception, Error) as error:
                 print("Error creating table:", error)
 
