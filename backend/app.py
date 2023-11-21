@@ -6,8 +6,7 @@ import os
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/insert": {"origins": "https://amyz1ng.github.io"}, "supports_credentials": True},
-     allow_headers=["Content-Type"])  # Allow Content-Type header
+CORS(app, resources={r"/insert": {"origins": "https://amyz1ng.github.io"}})
 
 # Connection parameters for ElephantSQL (replace with your credentials)
 dbname = 'cdkgoyuf'
@@ -37,6 +36,7 @@ def close_connection(exception):
 
 def create_table():
     connection = get_connection()
+    print(connection)
     if connection:
         with connection.cursor() as cursor:
             try:
