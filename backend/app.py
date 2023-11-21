@@ -84,19 +84,35 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
 
 @app.route('/insert', methods=['POST', 'OPTIONS'])
 def insert_data():
-    print('teststuff')
-    name = request.json.get('name')
-    email = request.json.get('email')
-    number_of_people = request.json.get('number_of_people')
-    date = request.json.get('date')
-    time = request.json.get('time')
-    booking_information = request.json.get('booking_information')
+    print('testr')
+    try:
+        data = request.json
+        name = data.get('name')
+        email = data.get('email')
+        number_of_people = data.get('number_of_people')
+        date = data.get('date')
+        time = data.get('time')
+        booking_information = data.get('booking_information')
 
-    insert_data_in_db(name, email, number_of_people, date, time, booking_information)
+        connection = get_connection()
+        if connection:
+            with connection.cursor() as cursor:
+                try:
+                    insert_query = '''
+                    INSERT INTO Reservation (name, email, number_of_people, date, time, booking_information)
+                    VALUES (%s, %s, %s, %s, %s, %s)
+                    '''
 
-    return jsonify({'message': 'Insert operation successful'})
+                    cursor.execute(insert_query, (name, email, number_of_people, date, time, booking_information))
+                    connection.commit()
+                    print("Data inserted successfully")
+                    return jsonify({'message': 'Insert operation successful'})
+                except (Exception, Error) as error:
+                    print("Error inserting data:", error)
+                    return jsonify({'error': str(error)})
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
-       
 
 if __name__ == '__main__':
     create_table()
