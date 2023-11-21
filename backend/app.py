@@ -84,17 +84,18 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
 
 @app.route('/insert', methods=['POST', 'OPTIONS'])
 def insert_data():
-    print('testr')
-    try:
-        data = request.json
-        name = data.get('name')
-        email = data.get('email')
-        number_of_people = data.get('number_of_people')
-        date = data.get('date')
-        time = data.get('time')
-        booking_information = data.get('booking_information')
-        
-        insert_data_in_db(name, email, number_of_people, date, time, booking_information)
+    print('teststuff')
+    name = request.json.get('name')
+    email = request.json.get('email')
+    number_of_people = request.json.get('number_of_people')
+    date = request.json.get('date')
+    time = request.json.get('time')
+    booking_information = request.json.get('booking_information')
+
+    insert_data_in_db(name, email, number_of_people, date, time, booking_information)
+
+    return jsonify({'message': 'Insert operation successful'})
+
        
 
 if __name__ == '__main__':
