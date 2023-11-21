@@ -6,13 +6,7 @@ import os
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/insert": {"origins": "https://amyz1ng.github.io"}})
-
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    return response
+CORS(app, resources={r"/insert": {"origins": "https://amyz1ng.github.io"}, "supports_credentials": True})
 
 # Connection parameters for ElephantSQL (replace with your credentials)
 dbname = 'cdkgoyuf'
@@ -78,7 +72,7 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
             except (Exception, Error) as error:
                 print("Error inserting data:", error)
 
-@app.route('/insert', methods=['POST'])
+@app.route('/insert', methods=['POST', 'OPTIONS'])
 def insert_data():
     print('testr')
     try:
