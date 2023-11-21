@@ -83,6 +83,7 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
 # API route to handle insertion of data
 @app.route('/insert', methods=['POST'])
 def insert_data():
+    print("Hello")
     data = request.json  # Get JSON data from the request
     name = data.get('name')
     email = data.get('email')
