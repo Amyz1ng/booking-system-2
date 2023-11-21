@@ -6,13 +6,7 @@ import os
 
 app = Flask(__name__)
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    # Other CORS headers if needed
-    # ...
-    return response
+CORS(app, resources={r"/insert": {"origins": "https://amyz1ng.github.io/booking-system-2"}})
 
 # Connection parameters for ElephantSQL (replace with your credentials)
 dbname = 'cdkgoyuf'
