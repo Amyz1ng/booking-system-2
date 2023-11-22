@@ -141,10 +141,10 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
                 cursor.execute(insert_query, (name, email, number_of_people, date, time, booking_information))
                 connection.commit()
                 print("Data inserted successfully")
-                return True  # Return True on success
+                return True
             except (Exception, Error) as error:
                 print("Error inserting data:", error)
-                return False  # Return False on failure
+                return False
 
 
 @app.route('/insert', methods=['POST', 'OPTIONS'])
