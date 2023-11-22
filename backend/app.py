@@ -66,6 +66,68 @@ def create_table():
             except (Exception, Error) as error:
                 print("Error creating table:", error)
 
+def check_availability(date, time, number_of_people):
+    connection = get_connection()
+    if connection:
+        with connection.cursor() as cursor:
+            try:
+                # Query to check if the given date and time are available
+                check_availability_query = '''
+                SELECT SUM(number_of_people), (SELECT MaxBookings FROM Settings) as max_bookings
+                FROM Reservation
+                WHERE date = %s AND time = %s
+                GROUP BY date
+                '''
+                cursor.execute(check_availability_query, (date, time))
+                result = cursor.fetchone()
+
+                if not result:
+                    return False, "No settings found"  # If settings not found
+
+                total_booked = result[0] if result else 0
+                max_bookings = result[1] if result else 0
+
+                if total_booked is not None and total_booked + number_of_people > max_bookings:
+                    return False, "Booked out"
+
+                # Query to check if there's already a booking for the given time on that day
+                check_booking_query = '''
+                SELECT COUNT(*)
+                FROM Reservation
+                WHERE date = %s AND time = %s
+                '''
+                cursor.execute(check_booking_query, (date, time))
+                booking_result = cursor.fetchone()
+
+                if booking_result[0] > 0:
+                    return False, "Booking already exists for this time"  # If booking exists
+
+                return True, "Available"  # If available
+
+            except (Exception, Error) as error:
+                print("Error checking availability:", error)
+                return False, str(error)  # Return False on error
+
+
+@app.route('/checkAvailability', methods=['POST', 'OPTIONS'])
+def check_availability_endpoint():
+    try:
+        data = request.json
+        date = data.get('date')
+        time = data.get('time')
+        number_of_people = data.get('number_of_people')
+
+        is_available, message = check_availability(date, time, number_of_people)
+
+        response = jsonify({'available': is_available, 'message': message})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+
+    except Exception as e:
+        response = jsonify({'error': str(e)})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+
 def insert_data_in_db(name, email, number_of_people, date, time, booking_information):
     connection = get_connection()
     if connection:
@@ -79,10 +141,10 @@ def insert_data_in_db(name, email, number_of_people, date, time, booking_informa
                 cursor.execute(insert_query, (name, email, number_of_people, date, time, booking_information))
                 connection.commit()
                 print("Data inserted successfully")
-                return True
+                return True  # Return True on success
             except (Exception, Error) as error:
                 print("Error inserting data:", error)
-                return False
+                return False  # Return False on failure
 
 
 @app.route('/insert', methods=['POST', 'OPTIONS'])
