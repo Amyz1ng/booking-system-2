@@ -174,6 +174,7 @@ def insert_data():
 
 
 if __name__ == '__main__':
+    print("bla123")
     create_table()
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
