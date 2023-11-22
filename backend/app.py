@@ -66,6 +66,8 @@ def create_table():
             except (Exception, Error) as error:
                 print("Error creating table:", error)
 
+create_table()
+
 def check_availability(date, time, number_of_people):
     connection = get_connection()
     if connection:
