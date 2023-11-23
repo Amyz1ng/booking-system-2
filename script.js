@@ -22,7 +22,7 @@ async function login(loginForm) {
   };
 
   try {
-    const response = await fetch('YOUR_LOGIN_ENDPOINT_URL', { // Replace with your login endpoint URL
+    const response = await fetch('login', { // Replace with your login endpoint URL
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
