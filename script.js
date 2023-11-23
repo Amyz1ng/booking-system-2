@@ -130,6 +130,7 @@ async function checkAuthentication() {
     if (currentPage !== 'login.html') { // Check if the current page is not login.html
       // Retrieve authentication status from localStorage
       const loggedIn = localStorage.getItem('loggedIn');
+      console.log("loggedIn",loggedIn)
 
       if (!loggedIn) {
         // User is not logged in, redirect to login page
