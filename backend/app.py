@@ -179,7 +179,7 @@ def authenticate_user(username, password):
                 '''
                 cursor.execute(select_user_query, (username, password))
                 result = cursor.fetchone()
-                print("result", result)
+                print("result", result is not None)
                 return result is not None
             except (Exception, Error) as error:
                 print("Error authenticating user:", error)
