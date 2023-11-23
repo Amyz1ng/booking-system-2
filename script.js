@@ -147,7 +147,7 @@ async function checkAuthentication() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // checkAuthentication();
+  checkAuthentication();
 
   const form = document.getElementById('myForm');
   if (form) {

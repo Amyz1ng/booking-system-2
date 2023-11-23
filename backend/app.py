@@ -8,14 +8,12 @@ app = Flask(__name__)
 
 @app.after_request
 def add_cors_headers(response):
-    allowed_origin = 'https://amyz1ng.github.io'  # Replace with your frontend origin
+    allowed_origin = 'https://amyz1ng.github.io'
     response.headers['Access-Control-Allow-Origin'] = allowed_origin
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    # Add other necessary CORS headers as needed
 
     return response
 
-# Connection parameters for ElephantSQL (replace with your credentials)
 dbname = 'cdkgoyuf'
 user = 'cdkgoyuf'
 password = '5GKhTH6GGnsQPZBS67-WjKZMoIBPqijL'
@@ -125,12 +123,8 @@ def login():
         data = request.json
         username = data.get('username')
         password = data.get('password')
-        print("username", username)
-        print("password", password)
 
         if authenticate_user(username, password):
-            # session['logged_in'] = True
-            # session['username'] = username
             return jsonify({'message': 'Logged in successfully'})
         else:
             return jsonify({'message': 'Invalid credentials'}), 401
@@ -172,14 +166,12 @@ def authenticate_user(username, password):
     if connection:
         with connection.cursor() as cursor:
             try:
-                print("entered")
                 select_user_query = '''
                 SELECT id FROM users
                 WHERE username = %s AND password = %s
                 '''
                 cursor.execute(select_user_query, (username, password))
                 result = cursor.fetchone()
-                print("result", result is not None)
                 return result is not None
             except (Exception, Error) as error:
                 print("Error authenticating user:", error)
@@ -293,7 +285,6 @@ def insert_data():
 
 
 if __name__ == '__main__':
-    print("bla123")
     create_table()
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
