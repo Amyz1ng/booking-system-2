@@ -54,8 +54,9 @@ def close_connection(exception):
 def create_tables():
     connection = get_connection()
     if connection:
-        try:
-            with connection.cursor() as cursor:
+        with connection.cursor() as cursor:
+            try:
+                # Create Reservation table
                 create_reservation_table_query = '''
                 CREATE TABLE IF NOT EXISTS Reservation (
                     id SERIAL PRIMARY KEY,
@@ -68,7 +69,9 @@ def create_tables():
                 )
                 '''
                 cursor.execute(create_reservation_table_query)
+                print("Reservation table created successfully")
 
+                # Create Settings table if not exists
                 create_settings_table_query = '''
                 CREATE TABLE IF NOT EXISTS Settings (
                     setting_id SERIAL PRIMARY KEY,
@@ -76,7 +79,9 @@ def create_tables():
                 )
                 '''
                 cursor.execute(create_settings_table_query)
+                print("Settings table created successfully")
 
+                # Create Users table if not exists
                 create_users_table_query = '''
                 CREATE TABLE IF NOT EXISTS users (
                     id SERIAL PRIMARY KEY,
@@ -86,7 +91,9 @@ def create_tables():
                 )
                 '''
                 cursor.execute(create_users_table_query)
+                print("Users table created successfully")
 
+                # Insert default value into Settings table if it's empty
                 cursor.execute("SELECT COUNT(*) FROM Settings")
                 count = cursor.fetchone()[0]
 
@@ -96,13 +103,18 @@ def create_tables():
                     VALUES (20)
                     '''
                     cursor.execute(insert_settings_query)
+                    print("Default value inserted into Settings table")
+                else:
+                    print("Settings table already contains data")
 
                 connection.commit()
-        except (Exception, Error) as error:
-            print("Error creating tables:", error)
-        finally:
-            if connection:
-                connection.close()
+                print("Table creation and initialization completed")
+                return "Tables created and initialized successfully"
+
+            except (Exception, Error) as error:
+                print("Error creating tables:", error)
+                return str(error)
+
 create_tables()
 
 # Login endpoint
@@ -233,8 +245,8 @@ def check_availability_endpoint():
         data = request.json
         date = data.get('date')
         time = data.get('time')
-        print('number_of_people', data)
         number_of_people = data.get('number_of_people')
+        print('number_of_people', number_of_people)
         is_available, message = check_availability(date, time, number_of_people)
 
         response = jsonify({'available': is_available, 'message': message})
@@ -242,7 +254,7 @@ def check_availability_endpoint():
         return response
 
     except Exception as e:
-        response = jsonify({'available': is_available, 'message': e})
+        response = jsonify({'error': str(e)})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
 
