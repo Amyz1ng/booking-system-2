@@ -147,13 +147,11 @@ async function checkAuthentication() {
   }
 }
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
   
   const form = document.getElementById('myForm');
   if (form) {
-    checkAuthentication();
+   /* checkAuthentication();*/
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       checkAvailability();
