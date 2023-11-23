@@ -189,6 +189,7 @@ def authenticate_user(email, password):
                 return False
 
 def check_availability(date, time, number_of_people):
+    print("0", date)
     connection = get_connection()
     if connection:
         with connection.cursor() as cursor:
@@ -240,7 +241,7 @@ def check_availability_endpoint():
         date = data.get('date')
         time = data.get('time')
         number_of_people = data.get('number_of_people')
-
+        print('number_of_people', number_of_people)
         is_available, message = check_availability(date, time, number_of_people)
 
         response = jsonify({'available': is_available, 'message': message})
