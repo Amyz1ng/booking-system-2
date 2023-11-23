@@ -36,9 +36,10 @@ async function login(loginForm) {
 
     const data = await response.json();
     console.log('Login successful:', data);
+    console.log('IsAdmin:', data);
     localStorage.setItem('loggedIn', true);
     localStorage.setItem('email', requestData.email);
-    localStorage.setItem('isAdmin', requestData.isAdmin);
+    localStorage.setItem('isAdmin', data.isAdmin);
 
     return true; // Return true if login is successful
   } catch (error) {
