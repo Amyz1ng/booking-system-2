@@ -167,7 +167,7 @@ header {
 
 .name {
     font-family: "Exo", sans-serif;
-    font-weight: 100;
+    font-weight: 400;
     font-size: 46px;
     margin-top: 50px;
     color: #fff;
@@ -175,7 +175,7 @@ header {
 
 .title {
     font-family: "Roboto", sans-serif;
-    font-weight: 200;
+    font-weight: 300;
     font-size: 28px;
     margin-top: 20px;
     margin-bottom: 90px;
@@ -467,7 +467,13 @@ div#map {
     .card {
         width: 100%;
     }
+    .name{
+        font-weight: 400;
+        color: black;}
 
+    .title{
+        font-weight: 300;
+    }
     /*.menu-container{ padding-top: 25%;}*/
 
     #map {
