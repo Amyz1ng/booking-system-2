@@ -95,7 +95,7 @@ def create_tables():
                 print("Error creating tables:", error)
                 return str(error)
 
-create_table()
+create_tables()
 
 def check_availability(date, time, number_of_people):
     connection = get_connection()
