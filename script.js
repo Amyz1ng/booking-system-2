@@ -147,11 +147,11 @@ async function checkAuthentication() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  checkAuthentication();
-
+  
   const form = document.getElementById('myForm');
   if (form) {
     form.addEventListener('submit', function (event) {
+      checkAuthentication();
       event.preventDefault();
       checkAvailability();
     });
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       const loggedIn = await login(loginForm);
       if (loggedIn) {
-        window.location.href = 'index.html';
+        window.location.href = 'contact.html';
       } else {
         // Handle unsuccessful login, display an error message, etc.
         alert('Login failed. Please try again.');

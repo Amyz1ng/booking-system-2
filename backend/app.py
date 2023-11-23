@@ -86,7 +86,8 @@ def create_tables():
                 CREATE TABLE IF NOT EXISTS users (
                     id SERIAL PRIMARY KEY,
                     username VARCHAR(50) UNIQUE NOT NULL,
-                    password VARCHAR(100) NOT NULL
+                    password VARCHAR(100) NOT NULL,
+                    isAdmin BOOLEAN DEFAULT FALSE
                 )
                 '''
                 cursor.execute(create_users_table_query)
@@ -123,11 +124,16 @@ def login():
         data = request.json
         username = data.get('username')
         password = data.get('password')
+        auth_status, is_admin = authenticate_user(username, password)
+        print('isAdmin', is_admin)
 
-        if authenticate_user(username, password):
-            return jsonify({'message': 'Logged in successfully'})
+        if auth_status:
+            if is_admin:
+                return jsonify({'message': 'Logged in as admin', 'isAdmin': is_admin})
+            else:
+                return jsonify({'message': 'Logged in successfully', 'isAdmin': is_admin})
         else:
-            return jsonify({'message': 'Invalid credentials'}), 401
+            return jsonify({'message': 'Invalid credentials', 'isAdmin': false}), 401
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -167,12 +173,16 @@ def authenticate_user(username, password):
         with connection.cursor() as cursor:
             try:
                 select_user_query = '''
-                SELECT id FROM users
+                SELECT id,isAdmin FROM users
                 WHERE username = %s AND password = %s
                 '''
                 cursor.execute(select_user_query, (username, password))
                 result = cursor.fetchone()
-                return result is not None
+                if result:
+                    user_id, is_admin = result
+                    return True, is_admin  # Authentication successful and isAdmin value
+                else:
+                    return False, False  # Authentication failed
             except (Exception, Error) as error:
                 print("Error authenticating user:", error)
                 return False
