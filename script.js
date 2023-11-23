@@ -117,26 +117,29 @@ async function book() {
 }
 
 async function checkAuthentication() {
-  console.log("first")
   try {
-    const response = await fetch('https://bookingsystem2-9ca46070b498.herokuapp.com/checkauthentication', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add your authorization headers if required
+    const currentPage = window.location.pathname.split('/').pop(); // Get current page URL
+
+    if (currentPage !== 'login.html') { // Check if the current page is not login.html
+      const response = await fetch('https://bookingsystem2-9ca46070b498.herokuapp.com/checkauthentication', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add your authorization headers if required
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-    });
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
+      const data = await response.json();
+      console.log('Authentication status:', data);
 
-    const data = await response.json();
-    console.log('Authentication status:', data);
-
-    if (!data.authenticated) {
-      // User is not logged in, redirect to login page
-      window.location.href = 'login.html'; // Change the URL to your login page
+      if (!data.authenticated) {
+        // User is not logged in, redirect to login page
+        window.location.href = 'login.html'; // Change the URL to your login page
+      }
     }
   } catch (error) {
     console.error('There was a problem checking authentication:', error);
@@ -147,7 +150,6 @@ async function checkAuthentication() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log("second")
   checkAuthentication();
 
   const form = document.getElementById('myForm');
