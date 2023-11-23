@@ -226,6 +226,7 @@ def check_availability(date, time, number_of_people):
 @app.route('/checkAvailability', methods=['POST', 'OPTIONS'])
 def check_availability_endpoint():
     try:
+        print("test")
         data = request.json
         date = data.get('date')
         time = data.get('time')
