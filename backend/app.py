@@ -198,14 +198,13 @@ def check_availability(date, time, number_of_people):
                 check_availability_query = '''
                 SELECT SUM(number_of_people), (SELECT MaxBookings FROM Settings) as max_bookings
                 FROM Reservation
-                WHERE date = %s AND time = %s
                 GROUP BY date
                 '''
                 print("1", date)
                 print("2", time)
                 cursor.execute(check_availability_query, (date, time))
                 result = cursor.fetchone()
-                
+
                 print("00", result)
 
                 if not result:
