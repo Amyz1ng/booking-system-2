@@ -125,6 +125,8 @@ def login():
         data = request.json
         username = data.get('username')
         password = data.get('password')
+        print("username", username)
+        print("password", password)
 
         if authenticate_user(username, password):
             session['logged_in'] = True
