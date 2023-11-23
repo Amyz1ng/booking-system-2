@@ -17,35 +17,41 @@
 <body>
     <header>
         <div class="row no-gutters">
-            
             <div class="col-md-12">
                 <div class="row no-gutters bg-color-name-title">
                     <div class="col heading">
                         <h1 class="name">Pizza-Berra</h1>
-                        <h2 class="title"> Make a reservation</h2>>
+                        <h2 class="title"> Make a reservation</h2>
                     </div>
                 </div>
-                
-                <div class="row no-gutters">
-                    <div class="col">
-                        <ul id="nav" class="list-inline menucontainer">
-                            <li class="col-6 col-sm-3 list-inline-item ui-menu-color-home menuitem">
-                                <a href="index.html" class="hvr-sweep-to-bottom"><i class="fa fa-igloo" aria-hidden="true"></i><span>Home</span></a>
+                <nav class="navbar navbar-dark navbar-expand-sm">
+                    <a href="/" class="navbar-brand">Pizza-berra</a>
+        
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span></button>
+        
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="active nav-item mr-2"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item mr-2"><a class="nav-link" href="menu.html">Menu</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="contact.html" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  contact
+                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="assets/menu/full-menu.pdf" target="_blank">menu</a>
+                                   
+                                </div>
                             </li>
-                            <li class="col-6 col-sm-3 list-inline-item ui-menu-color-menu menuitem">
-                                <a href="menu.html" class="hvr-sweep-to-bottom"><i class="fa fa-burger" aria-hidden="true"></i><span>menu</span></a>
-                            </li>
-                            <li class="col-6 col-sm-3 list-inline-item ui-menu-color-contact menuitem">
-                                <a href="contact.html" class="hvr-sweep-to-bottom"><i class="fa fa-phone" aria-hidden="true"></i><span>Contact</span></a>
-                            </li>
-                            <li class="col-6 col-sm-3 list-inline-item ui-menu-color-download menuitem">
-                                <a href="assets/menu/full-menu.pdf" class="hvr-sweep-to-bottom" target="_blank"><i class="fa fa-circle-down" aria-hidden="true"></i><span>Download menu</span></a>
-                            </li>
+        
+                            <li class="nav-item mr-2 d-block d-sm-none"><a class="nav-link" href="/login">Sign In / Sign Up</a></li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <div class="d-none d-md-block">
+                        <p class="navbar-text my-auto mr-2"><i>Great food delivered to your door!</i></p>
+                        <a href="/login" class="btn btn--cta btn--red">Sign In / Sign Up</a>
+                    </div>
+                </nav>
     </header>
     
     <img src="assets/images/body.jpg" alt="" class="menu-img">
