@@ -35,6 +35,18 @@ def get_connection():
         print("Error while connecting to PostgreSQL", error)
         return None
 
+# Endpoint to check authentication status
+@app.route('/checkauthentication', methods=['GET'])
+def check_authentication():
+    try:
+        if session.get('logged_in'):
+            return jsonify({'authenticated': True})
+        else:
+            return jsonify({'authenticated': False}), 401
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @app.teardown_appcontext
 def close_connection(exception):
     connection = getattr(g, '_database', None)
@@ -105,6 +117,69 @@ def create_tables():
                 return str(error)
 
 create_tables()
+
+# Login endpoint
+@app.route('/login', methods=['POST'])
+def login():
+    try:
+        data = request.json
+        username = data.get('username')
+        password = data.get('password')
+
+        if authenticate_user(username, password):
+            session['logged_in'] = True
+            session['username'] = username
+            return jsonify({'message': 'Logged in successfully'})
+        else:
+            return jsonify({'message': 'Invalid credentials'}), 401
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# Registration endpoint
+@app.route('/register', methods=['POST'])
+def register():
+    try:
+        data = request.json
+        username = data.get('username')
+        password = data.get('password')
+
+        connection = get_connection()
+        if connection:
+            with connection.cursor() as cursor:
+                try:
+                    insert_user_query = '''
+                    INSERT INTO users (username, password)
+                    VALUES (%s, %s)
+                    '''
+                    cursor.execute(insert_user_query, (username, password))
+                    connection.commit()
+                    return jsonify({'message': 'User registered successfully'})
+                except (Exception, Error) as error:
+                    print("Error registering user:", error)
+                    return jsonify({'error': 'Failed to register user'}), 500
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# Function to authenticate a user
+def authenticate_user(username, password):
+    connection = get_connection()
+    if connection:
+        with connection.cursor() as cursor:
+            try:
+                select_user_query = '''
+                SELECT id FROM users
+                WHERE username = %s AND password = %s
+                '''
+                cursor.execute(select_user_query, (username, password))
+                result = cursor.fetchone()
+                return result is not None
+            except (Exception, Error) as error:
+                print("Error authenticating user:", error)
+                return False
 
 def check_availability(date, time, number_of_people):
     connection = get_connection()
