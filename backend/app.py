@@ -129,8 +129,8 @@ def login():
         print("password", password)
 
         if authenticate_user(username, password):
-            session['logged_in'] = True
-            session['username'] = username
+            # session['logged_in'] = True
+            # session['username'] = username
             return jsonify({'message': 'Logged in successfully'})
         else:
             return jsonify({'message': 'Invalid credentials'}), 401
