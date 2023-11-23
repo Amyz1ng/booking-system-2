@@ -189,7 +189,6 @@ def authenticate_user(email, password):
                 return False
 
 def check_availability(date, time, number_of_people):
-    close_connection()
     connection = get_connection()
     if connection:
         print("0", date)
