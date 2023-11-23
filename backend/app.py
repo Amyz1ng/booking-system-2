@@ -126,6 +126,7 @@ def login():
         password = data.get('password')
         auth_status, is_admin = authenticate_user(username, password)
         print('isAdmin', is_admin)
+        print('isAdmin', auth_status)
 
         if auth_status:
             if is_admin:
