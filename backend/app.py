@@ -202,7 +202,7 @@ def check_availability(date, time, number_of_people):
                 '''
                 print("1", date)
                 print("2", time)
-                cursor.execute(check_availability_query, (date))
+                cursor.execute(check_availability_query, (date,))
                 result = cursor.fetchone()
                 
                 print("00", result)
