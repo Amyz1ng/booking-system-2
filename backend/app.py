@@ -54,8 +54,9 @@ def close_connection(exception):
 def create_tables():
     connection = get_connection()
     if connection:
-        try:
-            with connection.cursor() as cursor:
+        with connection.cursor() as cursor:
+            try:
+                # Create Reservation table
                 create_reservation_table_query = '''
                 CREATE TABLE IF NOT EXISTS Reservation (
                     id SERIAL PRIMARY KEY,
@@ -68,7 +69,9 @@ def create_tables():
                 )
                 '''
                 cursor.execute(create_reservation_table_query)
+                print("Reservation table created successfully")
 
+                # Create Settings table if not exists
                 create_settings_table_query = '''
                 CREATE TABLE IF NOT EXISTS Settings (
                     setting_id SERIAL PRIMARY KEY,
@@ -76,7 +79,9 @@ def create_tables():
                 )
                 '''
                 cursor.execute(create_settings_table_query)
+                print("Settings table created successfully")
 
+                # Create Users table if not exists
                 create_users_table_query = '''
                 CREATE TABLE IF NOT EXISTS users (
                     id SERIAL PRIMARY KEY,
@@ -86,7 +91,9 @@ def create_tables():
                 )
                 '''
                 cursor.execute(create_users_table_query)
+                print("Users table created successfully")
 
+                # Insert default value into Settings table if it's empty
                 cursor.execute("SELECT COUNT(*) FROM Settings")
                 count = cursor.fetchone()[0]
 
@@ -96,13 +103,18 @@ def create_tables():
                     VALUES (20)
                     '''
                     cursor.execute(insert_settings_query)
+                    print("Default value inserted into Settings table")
+                else:
+                    print("Settings table already contains data")
 
                 connection.commit()
-        except (Exception, Error) as error:
-            print("Error creating tables:", error)
-        finally:
-            if connection:
-                connection.close()
+                print("Table creation and initialization completed")
+                return "Tables created and initialized successfully"
+
+            except (Exception, Error) as error:
+                print("Error creating tables:", error)
+                return str(error)
+
 create_tables()
 
 # Login endpoint
@@ -177,23 +189,30 @@ def authenticate_user(email, password):
                 return False
 
 def check_availability(date, time, number_of_people):
-    try:
-        connection = get_connection()
-        if connection:
-            with connection.cursor() as cursor:
+    connection = get_connection()
+    if connection:
+        print("0", date)
+        with connection.cursor() as cursor:
+            try:
+                # Query to check if the given date and time are available
                 check_availability_query = '''
                 SELECT SUM(number_of_people), (SELECT MaxBookings FROM Settings) as max_bookings
                 FROM Reservation
+
                 GROUP BY date
                 '''
+                print("1", date)
+                print("2", time)
                 cursor.execute(check_availability_query, (date, time))
                 result = cursor.fetchone()
+                
+                print("00", result)
 
                 if not result:
-                    return False, "No settings found"
+                    return False, "No settings found"  # If settings not found
 
                 if len(result) != 2:
-                    return False, "Unexpected result format"
+                    return False, "Unexpected result format"  # Handle unexpected result format
 
                 total_booked = result[0] if result else 0
                 max_bookings = result[1] if result else 0
@@ -201,6 +220,7 @@ def check_availability(date, time, number_of_people):
                 if total_booked is not None and total_booked + number_of_people > max_bookings:
                     return False, "Booked out"
 
+                # Query to check if there's already a booking for the given time on that day
                 check_booking_query = '''
                 SELECT COUNT(*)
                 FROM Reservation
@@ -210,28 +230,23 @@ def check_availability(date, time, number_of_people):
                 booking_result = cursor.fetchone()
 
                 if booking_result[0] > 0:
-                    return False, "Booking already exists for this time"
+                    return False, "Booking already exists for this time"  # If booking exists
 
-                return True, "Available"
+                return True, "Available"  # If available
 
-    except (Exception, Error) as error:
-        print("Error checking availability:", error)
-        return False, str(error)
-    finally:
-        if connection:
-            connection.close()
-            print("Connection closed after checking availability")
+            except (Exception, Error) as error:
+                print("Error checking availability:", error)
+                return False, str(error)  # Return False on error
 
 
 @app.route('/checkAvailability', methods=['POST', 'OPTIONS'])
 def check_availability_endpoint():
     try:
-        print("test")
         data = request.json
         date = data.get('date')
         time = data.get('time')
-        print('number_of_people', data)
         number_of_people = data.get('number_of_people')
+        print('number_of_people', number_of_people)
         is_available, message = check_availability(date, time, number_of_people)
 
         response = jsonify({'available': is_available, 'message': message})
@@ -239,7 +254,7 @@ def check_availability_endpoint():
         return response
 
     except Exception as e:
-        response = jsonify({'available': is_available, 'message': e})
+        response = jsonify({'error': str(e)})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
 
