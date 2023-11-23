@@ -205,6 +205,8 @@ def check_availability(date, time, number_of_people):
                 print("2", time)
                 cursor.execute(check_availability_query, (date, time))
                 result = cursor.fetchone()
+                
+                print("00", result)
 
                 if not result:
                     return False, "No settings found"  # If settings not found
