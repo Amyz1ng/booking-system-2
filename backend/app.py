@@ -41,14 +41,13 @@ def close_connection(exception):
     if connection is not None:
         connection.close()
 
-def create_table():
-    print("test")
+def create_tables():
     connection = get_connection()
-    print(connection)
     if connection:
         with connection.cursor() as cursor:
             try:
-                create_table_query = '''
+                # Create Reservation table
+                create_reservation_table_query = '''
                 CREATE TABLE IF NOT EXISTS Reservation (
                     id SERIAL PRIMARY KEY,
                     name VARCHAR(100),
@@ -59,12 +58,42 @@ def create_table():
                     booking_information TEXT
                 )
                 '''
-                cursor.execute(create_table_query)
+                cursor.execute(create_reservation_table_query)
                 connection.commit()
-                print("Table created successfully")
-                return "Table created successfully"
+                print("Reservation table created successfully")
+
+                # Create Settings table if not exists
+                create_settings_table_query = '''
+                CREATE TABLE IF NOT EXISTS Settings (
+                    setting_id SERIAL PRIMARY KEY,
+                    MaxBookings INTEGER
+                )
+                '''
+                cursor.execute(create_settings_table_query)
+                connection.commit()
+                print("Settings table created successfully")
+
+                # Insert default value into Settings table if it's empty
+                cursor.execute("SELECT COUNT(*) FROM Settings")
+                count = cursor.fetchone()[0]
+
+                if count == 0:
+                    insert_settings_query = '''
+                    INSERT INTO Settings (MaxBookings)
+                    VALUES (20)
+                    '''
+                    cursor.execute(insert_settings_query)
+                    connection.commit()
+                    print("Default value inserted into Settings table")
+                else:
+                    print("Settings table already contains data")
+
+                print("Table creation and initialization completed")
+                return "Tables created and initialized successfully"
+
             except (Exception, Error) as error:
-                print("Error creating table:", error)
+                print("Error creating tables:", error)
+                return str(error)
 
 create_table()
 
