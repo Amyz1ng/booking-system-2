@@ -177,30 +177,23 @@ def authenticate_user(email, password):
                 return False
 
 def check_availability(date, time, number_of_people):
-    connection = get_connection()
-    if connection:
-        print("0", date)
-        with connection.cursor() as cursor:
-            try:
-                # Query to check if the given date and time are available
+    try:
+        connection = get_connection()
+        if connection:
+            with connection.cursor() as cursor:
                 check_availability_query = '''
                 SELECT SUM(number_of_people), (SELECT MaxBookings FROM Settings) as max_bookings
                 FROM Reservation
-
                 GROUP BY date
                 '''
-                print("1", date)
-                print("2", time)
                 cursor.execute(check_availability_query, (date, time))
                 result = cursor.fetchone()
-                
-                print("00", result)
 
                 if not result:
-                    return False, "No settings found"  # If settings not found
+                    return False, "No settings found"
 
                 if len(result) != 2:
-                    return False, "Unexpected result format"  # Handle unexpected result format
+                    return False, "Unexpected result format"
 
                 total_booked = result[0] if result else 0
                 max_bookings = result[1] if result else 0
@@ -208,7 +201,6 @@ def check_availability(date, time, number_of_people):
                 if total_booked is not None and total_booked + number_of_people > max_bookings:
                     return False, "Booked out"
 
-                # Query to check if there's already a booking for the given time on that day
                 check_booking_query = '''
                 SELECT COUNT(*)
                 FROM Reservation
@@ -218,13 +210,17 @@ def check_availability(date, time, number_of_people):
                 booking_result = cursor.fetchone()
 
                 if booking_result[0] > 0:
-                    return False, "Booking already exists for this time"  # If booking exists
+                    return False, "Booking already exists for this time"
 
-                return True, "Available"  # If available
+                return True, "Available"
 
-            except (Exception, Error) as error:
-                print("Error checking availability:", error)
-                return False, str(error)  # Return False on error
+    except (Exception, Error) as error:
+        print("Error checking availability:", error)
+        return False, str(error)
+    finally:
+        if connection:
+            connection.close()
+            print("Connection closed after checking availability")
 
 
 @app.route('/checkAvailability', methods=['POST', 'OPTIONS'])
