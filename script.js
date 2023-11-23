@@ -17,7 +17,7 @@ function sendMail(contactForm) {
 
 async function login(loginForm) {
   const requestData = {
-    username: loginForm.username.value,
+    email: loginForm.email.value,
     password: loginForm.password.value
   };
 
@@ -37,7 +37,8 @@ async function login(loginForm) {
     const data = await response.json();
     console.log('Login successful:', data);
     localStorage.setItem('loggedIn', true);
-    localStorage.setItem('username', requestData.username);
+    localStorage.setItem('email', requestData.email);
+    localStorage.setItem('isAdmin', requestData.isAdmin);
 
     return true; // Return true if login is successful
   } catch (error) {

@@ -85,7 +85,7 @@ def create_tables():
                 create_users_table_query = '''
                 CREATE TABLE IF NOT EXISTS users (
                     id SERIAL PRIMARY KEY,
-                    username VARCHAR(50) UNIQUE NOT NULL,
+                    email VARCHAR(50) UNIQUE NOT NULL,
                     password VARCHAR(100) NOT NULL,
                     isadmin BOOLEAN DEFAULT FALSE
                 )
@@ -122,9 +122,9 @@ create_tables()
 def login():
     try:
         data = request.json
-        username = data.get('username')
+        email = data.get('email')
         password = data.get('password')
-        auth_status, is_admin = authenticate_user(username, password)
+        auth_status, is_admin = authenticate_user(email, password)
         print('isAdmin', is_admin)
         print('isAdmin', auth_status)
 
@@ -144,7 +144,7 @@ def login():
 def register():
     try:
         data = request.json
-        username = data.get('username')
+        email = data.get('email')
         password = data.get('password')
 
         connection = get_connection()
@@ -152,10 +152,10 @@ def register():
             with connection.cursor() as cursor:
                 try:
                     insert_user_query = '''
-                    INSERT INTO users (username, password)
+                    INSERT INTO users (email, password)
                     VALUES (%s, %s)
                     '''
-                    cursor.execute(insert_user_query, (username, password))
+                    cursor.execute(insert_user_query, (email, password))
                     connection.commit()
                     return jsonify({'message': 'User registered successfully'})
                 except (Exception, Error) as error:
@@ -168,16 +168,16 @@ def register():
         return jsonify({'error': str(e)}), 500
 
 # Function to authenticate a user
-def authenticate_user(username, password):
+def authenticate_user(email, password):
     connection = get_connection()
     if connection:
         with connection.cursor() as cursor:
             try:
                 select_user_query = '''
                 SELECT id,isadmin FROM users
-                WHERE username = %s AND password = %s
+                WHERE email = %s AND password = %s
                 '''
-                cursor.execute(select_user_query, (username, password))
+                cursor.execute(select_user_query, (email, password))
                 result = cursor.fetchone()
                 if result:
                     user_id, is_admin = result
