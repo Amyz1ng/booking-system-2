@@ -52,6 +52,7 @@ async function checkAvailability() {
   const requestData = {
     date: document.getElementById('date').value,
     time: document.getElementById('time').value,
+    number_of_people: document.getElementById('numberofpeople').value,
   };
 
   try {
