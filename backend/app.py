@@ -209,6 +209,9 @@ def check_availability(date, time, number_of_people):
                 if not result:
                     return False, "No settings found"  # If settings not found
 
+                if len(result) != 2:
+                    return False, "Unexpected result format"  # Handle unexpected result format
+
                 total_booked = result[0] if result else 0
                 max_bookings = result[1] if result else 0
 
