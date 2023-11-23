@@ -246,8 +246,8 @@ def check_availability_endpoint():
         date = data.get('date')
         time = data.get('time')
         number_of_people = data.get('number_of_people')
-        print('number_of_people', number_of_people)
         is_available, message = check_availability(date, time, number_of_people)
+        print('number_of_people', is_available)
 
         response = jsonify({'available': is_available, 'message': message})
         response.headers.add('Access-Control-Allow-Origin', '*')
