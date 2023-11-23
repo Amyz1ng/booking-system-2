@@ -172,12 +172,14 @@ def authenticate_user(username, password):
     if connection:
         with connection.cursor() as cursor:
             try:
+                print("entered", result)
                 select_user_query = '''
                 SELECT id FROM users
                 WHERE username = %s AND password = %s
                 '''
                 cursor.execute(select_user_query, (username, password))
                 result = cursor.fetchone()
+                print("result", result)
                 return result is not None
             except (Exception, Error) as error:
                 print("Error authenticating user:", error)
