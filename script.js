@@ -69,7 +69,7 @@ async function checkAvailability() {
     }
 
     const data = await response.json();
-    console.log('data', data);
+    console.log('data', data.available);
     if (!data.available) {
       alert('The selected date and time are not available. Please choose another.');
       return;
