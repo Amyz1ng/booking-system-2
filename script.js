@@ -153,22 +153,24 @@ document.addEventListener('DOMContentLoaded', function () {
   checkAuthentication();
 
   const form = document.getElementById('myForm');
-
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    checkAvailability();
-  });
+  if (form) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      checkAvailability();
+    });
+  }
 
   const loginForm = document.getElementById('loginForm');
-
-  loginForm.addEventListener('submit', async function (event) {
-    event.preventDefault();
-    const loggedIn = await login(loginForm);
-    if (loggedIn) {
-      window.location.href = 'index.html';
-    } else {
-      // Handle unsuccessful login, display an error message, etc.
-      alert('Login failed. Please try again.');
-    }
-  });
+  if (loginForm) {
+    loginForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const loggedIn = await login(loginForm);
+      if (loggedIn) {
+        window.location.href = 'index.html';
+      } else {
+        // Handle unsuccessful login, display an error message, etc.
+        alert('Login failed. Please try again.');
+      }
+    });
+  }
 });
