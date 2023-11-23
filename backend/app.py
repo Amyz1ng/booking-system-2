@@ -254,7 +254,7 @@ def check_availability_endpoint():
         return response
 
     except Exception as e:
-        response = jsonify({'error': str(e)})
+        response = jsonify({'available': is_available, 'message': e})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
 
