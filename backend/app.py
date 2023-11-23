@@ -213,10 +213,11 @@ def check_availability(date, time, number_of_people):
                 if len(result) != 2:
                     return False, "Unexpected result format"  # Handle unexpected result format
 
-                total_booked = result[0] if result else 0
-                max_bookings = result[1] if result else 0
+                total_booked = int(result[0]) if result and isinstance(result[0], (int, float)) else 0
+                max_bookings = int(result[1]) if result and isinstance(result[1], (int, float)) else 0
 
-                if total_booked is not None and total_booked + number_of_people > max_bookings:
+
+                if total_booked is not None and total_booked + int(number_of_people) > max_bookings:
                     return False, "Booked out"
 
                 # Query to check if there's already a booking for the given time on that day
