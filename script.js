@@ -36,7 +36,8 @@ async function login(loginForm) {
 
     const data = await response.json();
     console.log('Login successful:', data);
-    // Optionally, you can handle the successful login response here
+    localStorage.setItem('loggedIn', true);
+    localStorage.setItem('username', requestData.username);
 
     return true; // Return true if login is successful
   } catch (error) {
@@ -116,27 +117,21 @@ async function book() {
     });
 }
 
+function logout() {
+  localStorage.clear(); // Clear all items from localStorage
+  window.location.href = 'login.html'; // Redirect to the login page
+}
+
+
 async function checkAuthentication() {
   try {
     const currentPage = window.location.pathname.split('/').pop(); // Get current page URL
 
     if (currentPage !== 'login.html') { // Check if the current page is not login.html
-      const response = await fetch('https://bookingsystem2-9ca46070b498.herokuapp.com/checkauthentication', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          // Add your authorization headers if required
-        }
-      });
+      // Retrieve authentication status from localStorage
+      const loggedIn = localStorage.getItem('loggedIn');
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-      console.log('Authentication status:', data);
-
-      if (!data.authenticated) {
+      if (!loggedIn) {
         // User is not logged in, redirect to login page
         window.location.href = 'login.html'; // Change the URL to your login page
       }
@@ -147,6 +142,7 @@ async function checkAuthentication() {
     window.location.href = 'login.html'; // Change the URL to your login page
   }
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
