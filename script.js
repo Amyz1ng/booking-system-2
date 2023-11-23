@@ -150,8 +150,8 @@ document.addEventListener('DOMContentLoaded', function () {
   
   const form = document.getElementById('myForm');
   if (form) {
+    checkAuthentication();
     form.addEventListener('submit', function (event) {
-      checkAuthentication();
       event.preventDefault();
       checkAvailability();
     });
