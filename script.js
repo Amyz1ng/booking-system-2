@@ -74,7 +74,7 @@ async function checkAvailability() {
       alert('The selected date and time are not available. Please choose another.');
       return;
     } else {
-      // book();
+      book();
     }
   } catch (error) {
     console.error('There was a problem checking availability:', error);
