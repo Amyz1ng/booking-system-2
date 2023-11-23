@@ -117,6 +117,7 @@ async function book() {
 }
 
 async function checkAuthentication() {
+  console.log("first")
   try {
     const response = await fetch('https://bookingsystem2-9ca46070b498.herokuapp.com/checkauthentication', {
       method: 'GET',
@@ -146,6 +147,7 @@ async function checkAuthentication() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+  console.log("second")
   checkAuthentication();
 
   const form = document.getElementById('myForm');
