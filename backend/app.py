@@ -59,7 +59,6 @@ def create_tables():
                 )
                 '''
                 cursor.execute(create_reservation_table_query)
-                connection.commit()
                 print("Reservation table created successfully")
 
                 # Create Settings table if not exists
@@ -70,8 +69,18 @@ def create_tables():
                 )
                 '''
                 cursor.execute(create_settings_table_query)
-                connection.commit()
                 print("Settings table created successfully")
+
+                # Create Users table if not exists
+                create_users_table_query = '''
+                CREATE TABLE IF NOT EXISTS users (
+                    id SERIAL PRIMARY KEY,
+                    username VARCHAR(50) UNIQUE NOT NULL,
+                    password VARCHAR(100) NOT NULL
+                )
+                '''
+                cursor.execute(create_users_table_query)
+                print("Users table created successfully")
 
                 # Insert default value into Settings table if it's empty
                 cursor.execute("SELECT COUNT(*) FROM Settings")
@@ -83,11 +92,11 @@ def create_tables():
                     VALUES (20)
                     '''
                     cursor.execute(insert_settings_query)
-                    connection.commit()
                     print("Default value inserted into Settings table")
                 else:
                     print("Settings table already contains data")
 
+                connection.commit()
                 print("Table creation and initialization completed")
                 return "Tables created and initialized successfully"
 
