@@ -172,7 +172,7 @@ def authenticate_user(username, password):
     if connection:
         with connection.cursor() as cursor:
             try:
-                print("entered", result)
+                print("entered")
                 select_user_query = '''
                 SELECT id FROM users
                 WHERE username = %s AND password = %s
