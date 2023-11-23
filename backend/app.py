@@ -87,7 +87,7 @@ def create_tables():
                     id SERIAL PRIMARY KEY,
                     username VARCHAR(50) UNIQUE NOT NULL,
                     password VARCHAR(100) NOT NULL,
-                    isAdmin BOOLEAN DEFAULT FALSE
+                    isadmin BOOLEAN DEFAULT FALSE
                 )
                 '''
                 cursor.execute(create_users_table_query)
@@ -174,7 +174,7 @@ def authenticate_user(username, password):
         with connection.cursor() as cursor:
             try:
                 select_user_query = '''
-                SELECT id,isAdmin FROM users
+                SELECT id,isadmin FROM users
                 WHERE username = %s AND password = %s
                 '''
                 cursor.execute(select_user_query, (username, password))
