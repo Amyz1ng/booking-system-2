@@ -200,6 +200,8 @@ def check_availability(date, time, number_of_people):
                 WHERE date = %s AND time = %s
                 GROUP BY date
                 '''
+                print("1", date)
+                print("2", time)
                 cursor.execute(check_availability_query, (date, time))
                 result = cursor.fetchone()
 
