@@ -17,7 +17,7 @@ function sendMail(contactForm) {
 
 function displayReservations(reservations) {
   const reservationsTableBody = document.querySelector('#reservations-table tbody');
-
+  console.log("Check", reservations)
   // Clear any existing rows in the table body
   reservationsTableBody.innerHTML = '';
 
