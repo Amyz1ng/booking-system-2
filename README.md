@@ -1,5 +1,5 @@
 # Booking system
-You can find the Live site [here](https://amyz1ng.github.io/Booking-system-/)
+You can find the Live site [here](https://amyz1ng.github.io/booking-system-2/)
 
 This website I have created is for a restaurant of my own creation, i used the menu from my first project 1 of Pizza-berra and made a live site with a booking system. 
 I have made it for a wide target audience of food lovers who also enjoy drinking, I wanted to encorporate a mix and match idea so that it would suite everyone's satisfaction.
