@@ -440,6 +440,9 @@ footer {
 }
 
 /* ----------------------------------------Contact Form */
+.nav-item{
+    color: white;
+}
 
 .contact-heading {
     font-family: "Exo", sans-serif;
