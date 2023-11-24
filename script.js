@@ -148,6 +148,7 @@ async function checkAuthentication() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  updateLinkText();
   
   const form = document.getElementById('myForm');
   if (form) {
@@ -180,22 +181,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (loggedIn === "true") {
             signInBtn.textContent = "Sign Out";
-            signInBtn.href = "/login.html"; // Update href for sign-out action
         } else {
-            signInBtn.textContent = "Sign In / Sign Up";
-            signInBtn.href = "/login.html"; // Update href for sign-in action
+            signInBtn.textContent = "Sign In";
         }
     };
 
-    updateLinkText();
 
-    const toggleButton = document.getElementById("toggleButton");
+    const toggleButton = document.getElementById("signInBtn");
 
     toggleButton.addEventListener("click", function() {
         const loggedIn = localStorage.getItem("loggedIn");
 
         if (loggedIn === "true") {
             logout();
+        }else{
+          window.location.href = 'login.html';
         }
 
         // Update link text after toggling loggedIn status
