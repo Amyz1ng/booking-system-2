@@ -152,7 +152,6 @@ async function book() {
     .then(data => {
       console.log('Insert operation successful:', data);
       document.getElementById('fullname').value = '';
-      document.getElementById('emailaddress').value = '';
       document.getElementById('numberofpeople').value = '';
       document.getElementById('date').value = '';
       document.getElementById('time').value = '';
