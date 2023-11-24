@@ -87,4 +87,57 @@ document.addEventListener('DOMContentLoaded', function () {
   }).catch(error => {
     console.error('Error fetching booking records:', error);
   });
+
+  let signInBtnWeb = document.getElementById("signInBtn");
+  let signInBtnMobile = document.getElementById("signInBtnMobile");
+
+
+  // Function to update the link text based on loggedIn status
+  const updateLinkText = () => {
+    const loggedIn = localStorage.getItem("loggedIn");
+
+    if (loggedIn === "true") {
+      if (signInBtnWeb) {
+        signInBtnWeb.textContent = "Sign Out";
+      } else {
+        signInBtnWeb.textContent = "Sign In";
+      }
+
+      if (signInBtnMobile) {
+        signInBtnMobile.textContent = "Sign Out";
+      } else {
+        signInBtnMobile.textContent = "Sign In";
+      }
+    }
+  };
+
+  updateLinkText();
+
+  if (signInBtnWeb) {
+    signInBtnWeb.addEventListener("click", function () {
+      const loggedIn = localStorage.getItem("loggedIn");
+
+      if (loggedIn === "true") {
+        logout();
+      } else {
+        window.location.href = 'login.html';
+      }
+
+      updateLinkText();
+    });
+  }
+
+  if (signInBtnMobile) {
+    signInBtnMobile.addEventListener("click", function () {
+      const loggedIn = localStorage.getItem("loggedIn");
+      console.log('loggedIn', loggedIn)
+      if (loggedIn === "true") {
+        logout();
+      } else {
+        window.location.href = 'login.html';
+      }
+
+      updateLinkText();
+    });
+  }
 });
