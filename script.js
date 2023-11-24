@@ -180,10 +180,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (loggedIn === "true") {
             signInBtn.textContent = "Sign Out";
-            signInBtn.href = "/logout"; // Update href for sign-out action
+            signInBtn.href = "/login.html"; // Update href for sign-out action
         } else {
             signInBtn.textContent = "Sign In / Sign Up";
-            signInBtn.href = "/login"; // Update href for sign-in action
+            signInBtn.href = "/login.html"; // Update href for sign-in action
         }
     };
 
