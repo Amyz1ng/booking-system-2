@@ -15,6 +15,29 @@ function sendMail(contactForm) {
   return false; // To block from loading a new page
 }
 
+function displayReservations(reservations) {
+  const reservationsTableBody = document.querySelector('#reservations-table tbody');
+
+  // Clear any existing rows in the table body
+  reservationsTableBody.innerHTML = '';
+
+  reservations.forEach(reservation => {
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+      <td>${reservation.name}</td>
+      <td>${reservation.email}</td>
+      <td>${reservation.date}</td>
+      <td>${reservation.time}</td>
+      <td>${reservation.number_of_people}</td>
+      <td>${reservation.booking_information}</td>
+    `;
+
+    reservationsTableBody.appendChild(row);
+  });
+}
+
+
 async function login(loginForm) {
   const requestData = {
     email: loginForm.email.value,
@@ -98,6 +121,7 @@ async function getBookings(email) {
     const data = await response.json();
     console.log('Reservations retrieved:', data);
 
+    displayReservations(data); // Call function to display reservations in HTML
 
     alert('Reservations retrieved successfully!');
   } catch (error) {
