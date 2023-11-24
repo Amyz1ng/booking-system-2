@@ -7,7 +7,8 @@ Whether it's to just come in and relax, have a pint or to come and enjoy a luxur
 
 Users of the website can find all the infomation they need to know about my restaurant, such as how to be in contact, opening times and days we operate, our social media for updates on specials and make reservations.
 # Responsive
-![am i responsive test](https://github.com/Amyz1ng/Booking-system-/assets/124196828/27ad7597-2122-4edd-a0d3-b033bc1b9a81)
+![Screenshot 2023-11-24 161045](https://github.com/Amyz1ng/booking-system-2/assets/124196828/ab2042df-fea1-47a5-a2a7-7b2ebb295b78)
+
 
 ## THE HEADER  
 
@@ -20,7 +21,8 @@ The header shows the name of the business and has 4 short introductions on cards
 Home Page
 On the main page we have 4 cards for the introduction to grab the readers into the site,with a lovely background to highlight out the infomation 
 
-![main Page body](https://github.com/Amyz1ng/Booking-system-/assets/124196828/043e73dc-3429-492b-b19c-287b99c93f09)
+![Screenshot 2023-11-24 161204](https://github.com/Amyz1ng/booking-system-2/assets/124196828/9070ce5b-500f-429d-9b7a-a8826383e6bb)
+
 
 The menu page 
 Shows the important infomation our main products of our restuarant which is the MENU 
@@ -33,7 +35,8 @@ The Contact page
 Here we can see a map, which is interactive with a marker!
 we also have our booking system form which allows you to set up a booking with a time and date.
 
-![contact body](https://github.com/Amyz1ng/Booking-system-/assets/124196828/8d286dcc-1883-49e1-8b64-2dcfdaddec37)
+![Screenshot 2023-11-24 161351](https://github.com/Amyz1ng/booking-system-2/assets/124196828/bd6c9643-657a-4638-827c-28287c0f1737)
+
 
 # Download
 
@@ -64,7 +67,7 @@ The contact section is  valuable for the user as it gives them the ability to fi
 Colours used I wanted to stick to a tasty colour palette for this site, utilizing the hero image background as much as possible to draw a user in and give a direct understanding to the website from the get go of launch.
 The contrast of colours used help the user to navigate through the website with ease as it is easy to read and stands out.
 
-![main Page body](https://github.com/Amyz1ng/Booking-system-/assets/124196828/556492f8-70a4-4922-b871-3a808450b49e)
+![Screenshot 2023-11-24 161204](https://github.com/Amyz1ng/booking-system-2/assets/124196828/aea6789a-870f-4645-901a-26acfb9b0ae6)
 
 
 ### Imagery  
@@ -82,7 +85,8 @@ At the top of the page I have my navigation bar, which contains the Home, Menu,C
 Each navigation will take you to the section within the page, however the download nav will take you to a new Tab to show you the menu for the restaurant.
 Navigation on Social media links (Facebook, Twitter, Instagram) which will open in new tabs to each individual social media's.
 
-![Nav bar](https://github.com/Amyz1ng/Booking-system-/assets/124196828/5afafd1c-a80d-49ce-b6eb-b4dfc42a9c27)
+![Screenshot 2023-11-24 161138](https://github.com/Amyz1ng/booking-system-2/assets/124196828/c9669ad8-7d28-4e5c-8eea-551f39dd0df6)
+
 ![footer](https://github.com/Amyz1ng/Booking-system-/assets/124196828/7868c39b-c998-4bc4-9512-14380f961eff)
 
 # Technologies Used  
