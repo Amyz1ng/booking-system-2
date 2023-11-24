@@ -30,8 +30,7 @@ function displayBookingRecords(records) {
 
   records.forEach(record => {
     const row = document.createElement('tr');
-    console.log('records', record)
-    // Create table cells for each column
+
     const {
       name,
       email,
@@ -40,6 +39,7 @@ function displayBookingRecords(records) {
       number_of_people,
       booking_information
     } = record;
+
     row.innerHTML = `
         <td>${name}</td>
         <td>${email}</td>
@@ -69,7 +69,6 @@ async function checkAuthentication() {
     if (currentPage !== 'login.html') {
       // Retrieve authentication status from localStorage
       const loggedIn = localStorage.getItem('loggedIn');
-      console.log("loggedIn", loggedIn)
 
       if (!loggedIn) {
         // User is not logged in, redirect to login page
@@ -84,7 +83,6 @@ async function checkAuthentication() {
 }
 
 async function deleteBookingRecord(recordId) {
-  console.log('id', recordId)
   try {
     const response = await fetch(`https://bookingsystem2-9ca46070b498.herokuapp.com/deletereservation/${recordId}`, {
       method: 'POST',
