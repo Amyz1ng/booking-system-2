@@ -106,7 +106,11 @@ async function deleteBookingRecord(recordId) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  checkAuthentication();
+  const currentPage = window.location.pathname.split('/').pop();
+  
+  if (currentPage == 'admin.html') {
+    checkAuthentication();
+  }
   // Fetch booking records from the backend (you need to implement this)
   // For example:
   fetchBookingRecords().then(records => {
