@@ -197,7 +197,7 @@ async function checkAuthentication() {
 document.addEventListener('DOMContentLoaded', function () {
   const currentPage = window.location.pathname.split('/').pop();
   const email = localStorage.getItem("email");
-
+  console.log("check", urrentPage !== 'contact.html' && email)
   if (currentPage !== 'contact.html' && email) {
     getBookings(email);
   }
