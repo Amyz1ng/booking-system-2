@@ -135,7 +135,8 @@ I confirm that the colors and fonts chosen are easy to read and accessible by ru
 I have run a test for mobile which is the first image and the second image is the lighthouse test on desktop as seen down below.
 
 ## MOBILE 
-!!!! place image here !!!!!!
+![Screenshot 2023-11-24 162419](https://github.com/Amyz1ng/booking-system-2/assets/124196828/0c545a14-cf8f-4bb0-a17b-9f128da7360b)
+
 ## DESKTOP
 ![lighthouse desktop](https://github.com/Amyz1ng/Booking-system-/assets/124196828/3e5254cf-2605-49c8-87f9-4bf0cfc952f4)
 
