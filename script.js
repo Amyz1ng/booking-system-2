@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (loggedIn === "true") {
       signInBtn.textContent = "Sign Out";
     } else {
-      signInBtn.textContent = "Sign In / Sign Up";
+      signInBtn.textContent = "Sign In";
     }
   };
 
