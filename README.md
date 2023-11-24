@@ -67,7 +67,7 @@ The contact section is  valuable for the user as it gives them the ability to fi
 Colours used I wanted to stick to a tasty colour palette for this site, utilizing the hero image background as much as possible to draw a user in and give a direct understanding to the website from the get go of launch.
 The contrast of colours used help the user to navigate through the website with ease as it is easy to read and stands out.
 
-![main Page body](https://github.com/Amyz1ng/Booking-system-/assets/124196828/556492f8-70a4-4922-b871-3a808450b49e)
+![Screenshot 2023-11-24 161204](https://github.com/Amyz1ng/booking-system-2/assets/124196828/aea6789a-870f-4645-901a-26acfb9b0ae6)
 
 
 ### Imagery  
