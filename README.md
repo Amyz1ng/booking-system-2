@@ -35,7 +35,8 @@ The Contact page
 Here we can see a map, which is interactive with a marker!
 we also have our booking system form which allows you to set up a booking with a time and date.
 
-![contact body](https://github.com/Amyz1ng/Booking-system-/assets/124196828/8d286dcc-1883-49e1-8b64-2dcfdaddec37)
+![Screenshot 2023-11-24 161351](https://github.com/Amyz1ng/booking-system-2/assets/124196828/bd6c9643-657a-4638-827c-28287c0f1737)
+
 
 # Download
 
