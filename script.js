@@ -157,6 +157,7 @@ async function book() {
       document.getElementById('time').value = '';
       document.getElementById('bookinginfomation').value = '';
       alert('Booking successful!');
+      getBookings(localStorage.getItem("email"));
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
