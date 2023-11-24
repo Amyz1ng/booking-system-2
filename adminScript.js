@@ -30,7 +30,7 @@ function displayBookingRecords(records) {
 
   records.forEach(record => {
     const row = document.createElement('tr');
-
+    console.log('records', record)
     // Create table cells for each column
     const {
       name,
