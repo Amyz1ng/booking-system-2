@@ -170,35 +170,57 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-  let signInBtn;
-  if(document.getElementById("signInBtn")){
-    signInBtn = document.getElementById("signInBtn");
-  }else{
-    signInBtn = document.getElementById("signInBtnMobile");
-  }
+
+  let signInBtnWeb = document.getElementById("signInBtn");
+  let signInBtnMobile = document.getElementById("signInBtnMobile");
+
 
   // Function to update the link text based on loggedIn status
   const updateLinkText = () => {
     const loggedIn = localStorage.getItem("loggedIn");
 
     if (loggedIn === "true") {
-      signInBtn.textContent = "Sign Out";
-    } else {
-      signInBtn.textContent = "Sign In";
+      if (signInBtnWeb) {
+        signInBtnWeb.textContent = "Sign Out";
+      } else {
+        signInBtnWeb.textContent = "Sign In";
+      }
+
+      if (signInBtnMobile) {
+        signInBtnMobile.textContent = "Sign Out";
+      } else {
+        signInBtnMobile.textContent = "Sign In";
+      }
     }
   };
 
   updateLinkText();
 
-  signInBtn.addEventListener("click", function () {
-    const loggedIn = localStorage.getItem("loggedIn");
+  if(signInBtnWeb){
+    signInBtnWeb.addEventListener("click", function () {
+      const loggedIn = localStorage.getItem("loggedIn");
+  
+      if (loggedIn === "true") {
+        logout();
+      } else {
+        window.location.href = 'login.html';
+      }
+  
+      updateLinkText();
+    });
+  }
 
-    if (loggedIn === "true") {
-      logout();
-    } else {
-      window.location.href = 'login.html';
-    }
-
-    updateLinkText();
-  });
+  if(signInBtnMobile){
+    signInBtnMobile.addEventListener("click", function () {
+      const loggedIn = localStorage.getItem("loggedIn");
+  
+      if (loggedIn === "true") {
+        logout();
+      } else {
+        window.location.href = 'login.html';
+      }
+  
+      updateLinkText();
+    });
+  }
 });
