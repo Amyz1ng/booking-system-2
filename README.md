@@ -177,7 +177,7 @@ When there were devices/browsers that I didn't have access to, I used https://ui
 This site was deployed through GitHub Pages using the following steps:
 
 1. Log into [GitHub.](https://github.com/)
-2. Locate the [repository.](https://github.com/Amyz1ng/Booking-system-)
+2. Locate the [repository.](https://github.com/Amyz1ng/booking-system-2)
 3. Locate the settings option along the options bar.
 4. Locate GitHub Pages options towards the bottom of the page.
 5. In 'Source' dropdown, select 'Master' from the branch options.
@@ -187,7 +187,7 @@ This site was deployed through GitHub Pages using the following steps:
 
 ## Cloning Project
 1. Log into [GitHub.](https://github.com/)
-2. Locate the [repository.](https://github.com/Amyz1ng/Booking-system-)
+2. Locate the [repository.](https://github.com/Amyz1ng/booking-system-2)
 3. Click the 'Code' dropdown above the file list.
 4. Copy the URL for the repository.
 5. Open Git Bash on your device.
