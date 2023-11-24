@@ -225,7 +225,7 @@ def check_availability(date, time, number_of_people, email):
                 booking_result = cursor.fetchone()
 
                 if booking_result[0] > 0:
-                    return False, "Booking already exists for this user at this time, please choose a different time"  # If booking exists
+                    return False, "Booking already exists for this user at this time, please choose a different time or date"  # If booking exists
 
                 return True, "Available, booking submitted"  # If available
 
