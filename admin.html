@@ -1,114 +1,111 @@
-<div style="padding: 2%;">
-  <!DOCTYPE html>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Admin Page</title>
-    <!-- Link your JavaScript file -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
-      type="text/css" />
-    <script src="https://kit.fontawesome.com/59e56de75d.js" crossorigin="anonymous"></script>
-    <script src="adminScript.js" defer></script>
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-    <style>
-      /* Add any desired styles here */
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Page</title>
+  <!-- Link your JavaScript file -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
+    type="text/css" />
+  <script src="https://kit.fontawesome.com/59e56de75d.js" crossorigin="anonymous"></script>
+  <script src="adminScript.js" defer></script>
+  <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+  <style>
+    /* Add any desired styles here */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
 
-      th,
-      td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-      }
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
 
-      th {
-        background-color: #f2f2f2;
-      }
+    th {
+      background-color: #f2f2f2;
+    }
 
-      tr:nth-child(even) {
-        background-color: #f9f9f9;
-      }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
 
-      .delete-btn {
-        color: red;
-        cursor: pointer;
-      }
-    </style>
-  </head>
+    .delete-btn {
+      color: red;
+      cursor: pointer;
+    }
+  </style>
+</head>
 
-  <body>
-    <header>
-      <div class="row no-gutters">
-        <div class="col-md-12 header-container">
-          <div class="row no-gutters bg-color-name-title">
-            <div class="col heading">
-              <h1 class="name">Pizza-Berra</h1>
-              <h2 class="title"> Food everyone will love</h2>
-            </div>
+<body style="padding: 2%;">
+  <header>
+    <div class="row no-gutters">
+      <div class="col-md-12 header-container">
+        <div class="row no-gutters bg-color-name-title">
+          <div class="col heading">
+            <h1 class="name">Pizza-Berra</h1>
+            <h2 class="title"> Food everyone will love</h2>
           </div>
-          <nav class="navbar navbar-dark navbar-expand-sm">
-            <a href="/" class="navbar-brand">Pizza-berra</a>
+        </div>
+        <nav class="navbar navbar-dark navbar-expand-sm">
+          <a href="/" class="navbar-brand">Pizza-berra</a>
 
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span></button>
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span></button>
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav mr-auto">
-                <li class="active nav-item mr-2"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="active nav-item mr-2"><a class="nav-link" href="menu.html">Menu</a></li>
-                <li class="active nav-item mr-2"><a class="nav-link" href="contact.html">Contact</a></li>
-                <li class="nav-item mr-2 d-block d-sm-none" id="signInBtnMobile"><a class="nav-link">Sign In
-                    / Sign
-                    Up</a></li>
-              </ul>
-            </div>
-            <div class="d-none d-md-block">
-              <p class="navbar-text my-auto mr-2"><i>Great food delivered to your door!</i></p>
-              <a class="btn btn--cta btn--red" id="signInBtn">Sign In / Sign Up</a>
-            </div>
-          </nav>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+              <li class="active nav-item mr-2"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="active nav-item mr-2"><a class="nav-link" href="menu.html">Menu</a></li>
+              <li class="active nav-item mr-2"><a class="nav-link" href="contact.html">Contact</a></li>
+              <li class="nav-item mr-2 d-block d-sm-none" id="signInBtnMobile"><a class="nav-link">Sign In
+                  / Sign
+                  Up</a></li>
+            </ul>
+          </div>
+          <div class="d-none d-md-block">
+            <p class="navbar-text my-auto mr-2"><i>Great food delivered to your door!</i></p>
+            <a class="btn btn--cta btn--red" id="signInBtn">Sign In / Sign Up</a>
+          </div>
+        </nav>
 
-    </header>
-    <h1>Admin Page</h1>
+  </header>
+  <h1>Admin Page</h1>
 
-    <table id="bookingTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Number of People</th>
-          <th>Booking Information</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="bookingRecords">
-        <!-- Table body content will be populated dynamically using JavaScript -->
-      </tbody>
-    </table>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
-  </body>
+  <table id="bookingTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Number of People</th>
+        <th>Booking Information</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="bookingRecords">
+      <!-- Table body content will be populated dynamically using JavaScript -->
+    </tbody>
+  </table>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+  </script>
+</body>
 
-  </html>
-</div>
+</html>
