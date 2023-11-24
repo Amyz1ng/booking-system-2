@@ -444,6 +444,10 @@ footer {
     color: white !important;
 }
 
+.nav-item{
+    color: white !important;
+}
+
 .contact-heading {
     font-family: "Exo", sans-serif;
     font-weight: 300;
