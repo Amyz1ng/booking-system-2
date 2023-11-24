@@ -186,9 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   updateLinkText();
 
-  const toggleButton = document.getElementById("toggleButton");
-
-  toggleButton.addEventListener("click", function () {
+  signInBtn.addEventListener("click", function () {
     const loggedIn = localStorage.getItem("loggedIn");
 
     if (loggedIn === "true") {
