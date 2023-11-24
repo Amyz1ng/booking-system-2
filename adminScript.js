@@ -12,7 +12,7 @@ async function fetchBookingRecords() {
     }
 
     const data = await response.json();
-
+    console.log('data.reservations', data.reservations)
     return Promise.resolve(data.reservations);
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
@@ -107,7 +107,7 @@ async function deleteBookingRecord(recordId) {
 
 document.addEventListener('DOMContentLoaded', function () {
   const currentPage = window.location.pathname.split('/').pop();
-  
+
   if (currentPage == 'admin.html') {
     checkAuthentication();
   }
