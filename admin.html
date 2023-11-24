@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Page</title>
+  <!-- Link your JavaScript file -->
+  <script src="admin.js" defer></script>
+  <style>
+    /* Add any desired styles here */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .delete-btn {
+      color: red;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Admin Page</h1>
+
+  <!-- Table to display booking records -->
+  <table id="bookingTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Number of People</th>
+        <th>Booking Information</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="bookingRecords">
+      <!-- Table body content will be populated dynamically using JavaScript -->
+    </tbody>
+  </table>
+</body>
+</html>
