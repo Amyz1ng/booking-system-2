@@ -133,7 +133,7 @@ async function checkAuthentication() {
     if (currentPage !== 'login.html') { // Check if the current page is not login.html
       // Retrieve authentication status from localStorage
       const loggedIn = localStorage.getItem('loggedIn');
-      console.log("loggedIn",loggedIn)
+      console.log("loggedIn", loggedIn)
 
       if (!loggedIn) {
         // User is not logged in, redirect to login page
@@ -149,10 +149,10 @@ async function checkAuthentication() {
 
 document.addEventListener('DOMContentLoaded', function () {
   updateLinkText();
-  
+
   const form = document.getElementById('myForm');
   if (form) {
-   /* checkAuthentication();*/
+    /* checkAuthentication();*/
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       checkAvailability();
@@ -173,32 +173,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  const signInBtn = document.getElementById("signInBtn");
+  const toggleButton = document.getElementById("signInBtn");
 
-    // Function to update the link text based on loggedIn status
-    const updateLinkText = () => {
-        const loggedIn = localStorage.getItem("loggedIn");
+  // Function to update the link text based on loggedIn status
+  const updateLinkText = () => {
+    const loggedIn = localStorage.getItem("loggedIn");
 
-        if (loggedIn === "true") {
-            signInBtn.textContent = "Sign Out";
-        } else {
-            signInBtn.textContent = "Sign In";
-        }
-    };
+    if (loggedIn === "true") {
+      toggleButton.textContent = "Sign Out";
+    } else {
+      toggleButton.textContent = "Sign In";
+    }
+  };
 
 
-    const toggleButton = document.getElementById("signInBtn");
+  toggleButton.addEventListener("click", function () {
+    const loggedIn = localStorage.getItem("loggedIn");
 
-    toggleButton.addEventListener("click", function() {
-        const loggedIn = localStorage.getItem("loggedIn");
+    if (loggedIn === "true") {
+      logout();
+    } else {
+      window.location.href = 'login.html';
+    }
 
-        if (loggedIn === "true") {
-            logout();
-        }else{
-          window.location.href = 'login.html';
-        }
-
-        // Update link text after toggling loggedIn status
-        updateLinkText();
-    });
+    // Update link text after toggling loggedIn status
+    updateLinkText();
+  });
 });
