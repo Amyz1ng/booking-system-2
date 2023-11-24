@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if(signInBtnMobile){
     signInBtnMobile.addEventListener("click", function () {
       const loggedIn = localStorage.getItem("loggedIn");
-  
+      console.log('loggedIn', loggedIn)
       if (loggedIn === "true") {
         logout();
       } else {
