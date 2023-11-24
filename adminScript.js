@@ -20,6 +20,11 @@ async function fetchBookingRecords() {
 
 }
 
+function logout() {
+  localStorage.clear(); // Clear all items from localStorage
+  window.location.href = 'index.html'; // Redirect to the login page
+}
+
 function displayBookingRecords(records) {
   const tableBody = document.getElementById('bookingRecords');
 
