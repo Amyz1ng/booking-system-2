@@ -384,7 +384,7 @@ def get_reservationsl():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/deletereservation/<int:reservation_id>', methods=['DELETE'])
+@app.route('/deletereservation/<int:reservation_id>', methods=['POST'])
 def delete_reservation(reservation_id):
     try:
         connection = get_connection()

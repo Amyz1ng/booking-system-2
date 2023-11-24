@@ -61,7 +61,7 @@ async function deleteBookingRecord(recordId) {
   console.log('id', recordId)
   try {
     const response = await fetch(`https://bookingsystem2-9ca46070b498.herokuapp.com/deletereservation/${recordId}`, {
-      method: 'DELETE',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       }
