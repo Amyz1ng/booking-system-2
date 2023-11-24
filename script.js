@@ -175,9 +175,9 @@ function logout() {
 
 async function checkAuthentication() {
   try {
-    const currentPage = window.location.pathname.split('/').pop(); // Get current page URL
+    const currentPage = window.location.pathname.split('/').pop();
 
-    if (currentPage !== 'login.html') { // Check if the current page is not login.html
+    if (currentPage !== 'login.html') {
       // Retrieve authentication status from localStorage
       const loggedIn = localStorage.getItem('loggedIn');
       console.log("loggedIn", loggedIn)
@@ -195,10 +195,15 @@ async function checkAuthentication() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  getBookings('admin@gmail.com');
+  const currentPage = window.location.pathname.split('/').pop();
+  const email = localStorage.getItem("email");
+
+  if (currentPage !== 'contact.html' && email) {
+    getBookings(email);
+  }
+
   const form = document.getElementById('myForm');
   if (form) {
-    /* checkAuthentication();*/
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       checkAvailability();
@@ -244,21 +249,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   updateLinkText();
 
-  if(signInBtnWeb){
+  if (signInBtnWeb) {
     signInBtnWeb.addEventListener("click", function () {
       const loggedIn = localStorage.getItem("loggedIn");
-  
+
       if (loggedIn === "true") {
         logout();
       } else {
         window.location.href = 'login.html';
       }
-  
+
       updateLinkText();
     });
   }
 
-  if(signInBtnMobile){
+  if (signInBtnMobile) {
     signInBtnMobile.addEventListener("click", function () {
       const loggedIn = localStorage.getItem("loggedIn");
       console.log('loggedIn', loggedIn)
@@ -267,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         window.location.href = 'login.html';
       }
-  
+
       updateLinkText();
     });
   }
