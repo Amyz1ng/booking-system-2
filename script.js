@@ -121,7 +121,7 @@ async function getBookings(email) {
     const data = await response.json();
     console.log('Reservations retrieved:', data);
 
-    displayReservations(data); // Call function to display reservations in HTML
+    displayReservations(data.reservations); // Call function to display reservations in HTML
 
     alert('Reservations retrieved successfully!');
   } catch (error) {
