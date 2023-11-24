@@ -58,9 +58,25 @@ function displayBookingRecords(records) {
 }
 
 function deleteBookingRecord(recordId) {
-  // Make a backend call to delete the record by ID
-  // Replace this with your actual backend delete API call
-  // Use the recordId to identify and delete the record
+  console.log('id', recordId)
+  // try {
+  //   const response = await fetch(`https://bookingsystem2-9ca46070b498.herokuapp.com/getallreservations`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   });
+
+  //   if (!response.ok) {
+  //     throw new Error('Network response was not ok');
+  //   }
+
+  //   const data = await response.json();
+
+  //   return Promise.resolve(data.reservations);
+  // } catch (error) {
+  //   console.error('There was a problem with the fetch operation:', error);
+  // }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
