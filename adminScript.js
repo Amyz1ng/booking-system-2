@@ -62,6 +62,27 @@ function displayBookingRecords(records) {
   });
 }
 
+async function checkAuthentication() {
+  try {
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (currentPage !== 'login.html') {
+      // Retrieve authentication status from localStorage
+      const loggedIn = localStorage.getItem('loggedIn');
+      console.log("loggedIn", loggedIn)
+
+      if (!loggedIn) {
+        // User is not logged in, redirect to login page
+        window.location.href = 'login.html'; // Change the URL to your login page
+      }
+    }
+  } catch (error) {
+    console.error('There was a problem checking authentication:', error);
+    // Handle error or redirect to login page if authentication check fails
+    window.location.href = 'login.html'; // Change the URL to your login page
+  }
+}
+
 async function deleteBookingRecord(recordId) {
   console.log('id', recordId)
   try {
@@ -85,6 +106,7 @@ async function deleteBookingRecord(recordId) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  checkAuthentication();
   // Fetch booking records from the backend (you need to implement this)
   // For example:
   fetchBookingRecords().then(records => {
