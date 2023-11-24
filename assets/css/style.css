@@ -441,7 +441,7 @@ footer {
 
 /* ----------------------------------------Contact Form */
 .nav-item{
-    color: white;
+    color: white !important;
 }
 
 .contact-heading {
