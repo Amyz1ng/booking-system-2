@@ -196,6 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const currentPage = window.location.pathname.split('/').pop();
   const email = localStorage.getItem("email");
   if (currentPage == 'contact.html' && email) {
+    console.log('entered');
     checkAuthentication();
     getBookings(email);
   }
