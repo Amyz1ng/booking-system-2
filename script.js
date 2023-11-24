@@ -82,6 +82,29 @@ async function checkAvailability() {
   }
 }
 
+async function getBookings(email) {
+  try {
+    const response = await fetch(`https://bookingsystem2-9ca46070b498.herokuapp.com/reservations/${email}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    console.log('Reservations retrieved:', data);
+
+
+    alert('Reservations retrieved successfully!');
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+  }
+}
+
 async function book() {
   const data = {
     name: document.getElementById('fullname').value,
@@ -148,6 +171,7 @@ async function checkAuthentication() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  getBookings('admin@gmail.com');
   const form = document.getElementById('myForm');
   if (form) {
     /* checkAuthentication();*/
