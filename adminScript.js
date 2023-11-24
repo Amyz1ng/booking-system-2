@@ -45,8 +45,8 @@ function displayBookingRecords(records) {
         <td>${email}</td>
         <td>${date}</td>
         <td>${time}</td>
-        <td>${numberOfPeople}</td>
-        <td>${bookingInfo}</td>
+        <td>${number_of_people}</td>
+        <td>${booking_information}</td>
         <td><span class="delete-btn" data-id="${record.id}">Delete</span></td>
       `;
 
