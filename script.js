@@ -171,46 +171,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const signInBtn = document.getElementById("signInBtn");
+  const signInBtn = document.getElementById("signInBtn");
 
-    // Function to update the link text based on loggedIn status
-    const updateLinkText = () => {
-      const loggedIn = localStorage.getItem("loggedIn");
+  // Function to update the link text based on loggedIn status
+  const updateLinkText = () => {
+    const loggedIn = localStorage.getItem("loggedIn");
 
-      if (loggedIn === "true") {
-        signInBtn.textContent = "Sign Out";
-        signInBtn.href = "/logout"; // Update href for sign-out action
-      } else {
-        signInBtn.textContent = "Sign In / Sign Up";
-        signInBtn.href = "/login"; // Update href for sign-in action
-      }
-    };
+    if (loggedIn === "true") {
+      signInBtn.textContent = "Sign Out";
+      signInBtn.href = "/logout"; // Update href for sign-out action
+    } else {
+      signInBtn.textContent = "Sign In / Sign Up";
+      signInBtn.href = "/login"; // Update href for sign-in action
+    }
+  };
 
-    // Initial update when the DOM is loaded
+  updateLinkText();
+
+  const toggleButton = document.getElementById("toggleButton");
+
+  toggleButton.addEventListener("click", function () {
+    const loggedIn = localStorage.getItem("loggedIn");
+
+    if (loggedIn === "true") {
+      logout();
+      localStorage.setItem("loggedIn", "false");
+    } else {
+      localStorage.setItem("loggedIn", "true");
+    }
+
     updateLinkText();
-
-    // You may have a mechanism to toggle the loggedIn status
-    // For example, a function called toggleLoggedInStatus()
-
-    // Example usage when updating loggedIn status
-    // For instance, on a button click, or after successful login/logout
-
-    // For the sake of demonstration, let's simulate a button click to toggle the status
-    const toggleButton = document.getElementById("toggleButton");
-
-    toggleButton.addEventListener("click", function () {
-      const loggedIn = localStorage.getItem("loggedIn");
-
-      if (loggedIn === "true") {
-        logout();
-        localStorage.setItem("loggedIn", "false");
-      } else {
-        localStorage.setItem("loggedIn", "true");
-      }
-
-      // Update link text after toggling loggedIn status
-      updateLinkText();
-    });
   });
 });
