@@ -119,11 +119,8 @@ async function getBookings(email) {
     }
 
     const data = await response.json();
-    console.log('Reservations retrieved:', data);
 
-    displayReservations(data.reservations); // Call function to display reservations in HTML
-
-    alert('Reservations retrieved successfully!');
+    displayReservations(data.reservations);
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
   }
@@ -132,7 +129,7 @@ async function getBookings(email) {
 async function book() {
   const data = {
     name: document.getElementById('fullname').value,
-    email: document.getElementById('emailaddress').value,
+    email: localStorage.getItem("email"),
     number_of_people: document.getElementById('numberofpeople').value,
     date: document.getElementById('date').value,
     time: document.getElementById('time').value,
