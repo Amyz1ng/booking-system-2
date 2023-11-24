@@ -37,8 +37,8 @@ function displayBookingRecords(records) {
       email,
       date,
       time,
-      numberOfPeople,
-      bookingInfo
+      number_of_people,
+      booking_information
     } = record;
     row.innerHTML = `
         <td>${name}</td>
