@@ -148,8 +148,6 @@ async function checkAuthentication() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  updateLinkText();
-
   const form = document.getElementById('myForm');
   if (form) {
     /* checkAuthentication();*/
@@ -173,20 +171,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     const signInBtn = document.getElementById("signInBtn");
 
     // Function to update the link text based on loggedIn status
     const updateLinkText = () => {
-        const loggedIn = localStorage.getItem("loggedIn");
+      const loggedIn = localStorage.getItem("loggedIn");
 
-        if (loggedIn === "true") {
-            signInBtn.textContent = "Sign Out";
-            signInBtn.href = "/logout"; // Update href for sign-out action
-        } else {
-            signInBtn.textContent = "Sign In / Sign Up";
-            signInBtn.href = "/login"; // Update href for sign-in action
-        }
+      if (loggedIn === "true") {
+        signInBtn.textContent = "Sign Out";
+        signInBtn.href = "/logout"; // Update href for sign-out action
+      } else {
+        signInBtn.textContent = "Sign In / Sign Up";
+        signInBtn.href = "/login"; // Update href for sign-in action
+      }
     };
 
     // Initial update when the DOM is loaded
@@ -201,17 +199,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // For the sake of demonstration, let's simulate a button click to toggle the status
     const toggleButton = document.getElementById("toggleButton");
 
-    toggleButton.addEventListener("click", function() {
-        const loggedIn = localStorage.getItem("loggedIn");
+    toggleButton.addEventListener("click", function () {
+      const loggedIn = localStorage.getItem("loggedIn");
 
-        if (loggedIn === "true") {
-            localStorage.setItem("loggedIn", "false");
-        } else {
-            localStorage.setItem("loggedIn", "true");
-        }
+      if (loggedIn === "true") {
+        logout();
+        localStorage.setItem("loggedIn", "false");
+      } else {
+        localStorage.setItem("loggedIn", "true");
+      }
 
-        // Update link text after toggling loggedIn status
-        updateLinkText();
+      // Update link text after toggling loggedIn status
+      updateLinkText();
     });
-});
+  });
 });
