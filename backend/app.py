@@ -191,7 +191,6 @@ def authenticate_user(email, password):
 def check_availability(date, time, number_of_people):
     connection = get_connection()
     if connection:
-        print("0", date)
         with connection.cursor() as cursor:
             try:
                 # Query to check if the given date and time are available
@@ -200,12 +199,8 @@ def check_availability(date, time, number_of_people):
                 FROM Reservation
                 WHERE date = %s
                 '''
-                print("1", date)
-                print("2", time)
                 cursor.execute(check_availability_query, (date,))
                 result = cursor.fetchone()
-                
-                print("00", result)
 
                 if not result:
                     return False, "No settings found"  # If settings not found
@@ -218,7 +213,7 @@ def check_availability(date, time, number_of_people):
 
 
                 if total_booked is not None and total_booked + int(number_of_people) > max_bookings:
-                    return False, "Booked out"
+                    return False, "There are only " + max_bookings - total_booked + " number of people left today!"
 
                 # Query to check if there's already a booking for the given time on that day
                 check_booking_query = '''
@@ -230,9 +225,9 @@ def check_availability(date, time, number_of_people):
                 booking_result = cursor.fetchone()
 
                 if booking_result[0] > 0:
-                    return False, "Booking already exists for this time"  # If booking exists
+                    return False, "Booking already exists for this time, please choose a different time"  # If booking exists
 
-                return True, "Available"  # If available
+                return True, "Available, booking submitted"  # If available
 
             except (Exception, Error) as error:
                 print("Error checking availability:", error)
