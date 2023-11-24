@@ -14,6 +14,54 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/59e56de75d.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+
+    <style>
+        /* Styles for the card container */
+        .card {
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 100px;
+            /* Adjust as needed for vertical positioning */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        /* Additional styles for form elements */
+        #loginForm {
+            text-align: center;
+        }
+
+        #loginForm label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #loginForm input[type="text"],
+        #loginForm input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #loginForm input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #loginForm input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
@@ -64,7 +112,7 @@
                 </nav>
     </header>
 
-    <div class="card">
+    <div class="login-card">
         <div class="login-text">
             <h2>Login</h2>
         </div>
