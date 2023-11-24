@@ -127,6 +127,27 @@ async function getBookings(email) {
   }
 }
 
+async function checkAuthentication() {
+  try {
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (currentPage !== 'login.html') {
+      // Retrieve authentication status from localStorage
+      const loggedIn = localStorage.getItem('loggedIn');
+      console.log("loggedIn", loggedIn)
+
+      if (!loggedIn) {
+        // User is not logged in, redirect to login page
+        window.location.href = 'login.html'; // Change the URL to your login page
+      }
+    }
+  } catch (error) {
+    console.error('There was a problem checking authentication:', error);
+    // Handle error or redirect to login page if authentication check fails
+    window.location.href = 'login.html'; // Change the URL to your login page
+  }
+}
+
 async function book() {
   const data = {
     name: document.getElementById('fullname').value,
@@ -171,34 +192,16 @@ function logout() {
 }
 
 
-async function checkAuthentication() {
-  try {
-    const currentPage = window.location.pathname.split('/').pop();
-
-    if (currentPage !== 'login.html') {
-      // Retrieve authentication status from localStorage
-      const loggedIn = localStorage.getItem('loggedIn');
-      console.log("loggedIn", loggedIn)
-
-      if (!loggedIn) {
-        // User is not logged in, redirect to login page
-        window.location.href = 'login.html'; // Change the URL to your login page
-      }
-    }
-  } catch (error) {
-    console.error('There was a problem checking authentication:', error);
-    // Handle error or redirect to login page if authentication check fails
-    window.location.href = 'login.html'; // Change the URL to your login page
-  }
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   const currentPage = window.location.pathname.split('/').pop();
   const email = localStorage.getItem("email");
   if (currentPage == 'contact.html' && email) {
     console.log('entered');
-    checkAuthentication();
     getBookings(email);
+  }
+  
+  if (currentPage == 'contact.html') {
+    checkAuthentication();
   }
 
   const form = document.getElementById('myForm');
