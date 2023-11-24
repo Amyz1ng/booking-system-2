@@ -343,6 +343,47 @@ def get_reservations_by_email(email):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/getallreservations', methods=['GET'])
+def get_reservationsl():
+    try:
+        connection = get_connection()
+        if connection:
+            with connection.cursor() as cursor:
+                try:
+                    select_reservations_query = '''
+                    SELECT id, name, email, number_of_people, date, time, booking_information
+                    FROM Reservation
+                    '''
+                    cursor.execute(select_reservations_query)
+                    reservations = cursor.fetchall()
+
+                    if reservations:
+                        reservations_data = []
+                        for reservation in reservations:
+                            reservation_dict = {
+                                'id': reservation[0],
+                                'name': reservation[1],
+                                'email': reservation[2],
+                                'number_of_people': reservation[3],
+                                'date': reservation[4].strftime("%Y-%m-%d"),
+                                'time': reservation[5].strftime("%H:%M:%S"),
+                                'booking_information': reservation[6]
+                            }
+                            reservations_data.append(reservation_dict)
+
+                        return jsonify({'reservations': reservations_data})
+                    else:
+                        return jsonify({'message': 'No reservations found for this email'})
+
+                except (Exception, Error) as error:
+                    print("Error fetching reservations:", error)
+                    return jsonify({'error': 'Failed to fetch reservations'}), 500
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     create_table()
