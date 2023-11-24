@@ -179,10 +179,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (loggedIn === "true") {
       signInBtn.textContent = "Sign Out";
-      signInBtn.href = "/logout"; // Update href for sign-out action
     } else {
       signInBtn.textContent = "Sign In / Sign Up";
-      signInBtn.href = "/login"; // Update href for sign-in action
     }
   };
 
@@ -195,9 +193,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (loggedIn === "true") {
       logout();
-      localStorage.setItem("loggedIn", "false");
     } else {
-      localStorage.setItem("loggedIn", "true");
+      window.location.href = 'login.html';
     }
 
     updateLinkText();
