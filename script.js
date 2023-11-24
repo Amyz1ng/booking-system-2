@@ -170,8 +170,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-
-  const signInBtn = document.getElementById("signInBtn")? document.getElementById("signInBtn"): document.getElementById("signInBtnMobile");
+  let signInBtn;
+  if(document.getElementById("signInBtn")){
+    signInBtn = document.getElementById("signInBtn");
+  }else{
+    signInBtn = document.getElementById("signInBtnMobile");
+  }
 
   // Function to update the link text based on loggedIn status
   const updateLinkText = () => {
