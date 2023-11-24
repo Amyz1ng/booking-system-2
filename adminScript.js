@@ -57,26 +57,26 @@ function displayBookingRecords(records) {
   });
 }
 
-function deleteBookingRecord(recordId) {
+async function deleteBookingRecord(recordId) {
   console.log('id', recordId)
-  // try {
-  //   const response = await fetch(`https://bookingsystem2-9ca46070b498.herokuapp.com/getallreservations`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   });
+  try {
+    const response = await fetch(`https://bookingsystem2-9ca46070b498.herokuapp.com/deletereservation/${recordId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-  //   if (!response.ok) {
-  //     throw new Error('Network response was not ok');
-  //   }
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
 
-  //   const data = await response.json();
+    const data = await response.json();
 
-  //   return Promise.resolve(data.reservations);
-  // } catch (error) {
-  //   console.error('There was a problem with the fetch operation:', error);
-  // }
+    return Promise.resolve(data.reservations);
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {

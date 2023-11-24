@@ -384,6 +384,33 @@ def get_reservationsl():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/deletereservation/<int:reservation_id>', methods=['DELETE'])
+def delete_reservation(reservation_id):
+    try:
+        connection = get_connection()
+        if connection:
+            with connection.cursor() as cursor:
+                try:
+                    delete_reservation_query = '''
+                    DELETE FROM Reservation
+                    WHERE id = %s
+                    '''
+                    cursor.execute(delete_reservation_query, (reservation_id,))
+                    connection.commit()
+
+                    if cursor.rowcount > 0:
+                        return jsonify({'message': 'Reservation deleted successfully'})
+                    else:
+                        return jsonify({'message': 'No reservation found with this ID'}), 404
+
+                except Exception as error:
+                    print("Error deleting reservation:", error)
+                    return jsonify({'error': 'Failed to delete reservation'}), 500
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     create_table()
