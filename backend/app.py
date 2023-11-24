@@ -188,7 +188,7 @@ def authenticate_user(email, password):
                 print("Error authenticating user:", error)
                 return False
 
-def check_availability(date, time, number_of_people):
+def check_availability(date, time, number_of_people, email):
     connection = get_connection()
     if connection:
         with connection.cursor() as cursor:
@@ -219,13 +219,13 @@ def check_availability(date, time, number_of_people):
                 check_booking_query = '''
                 SELECT COUNT(*)
                 FROM Reservation
-                WHERE date = %s AND time = %s
+                WHERE date = %s AND time = %s AND email = %s
                 '''
-                cursor.execute(check_booking_query, (date, time))
+                cursor.execute(check_booking_query, (date, time, email))
                 booking_result = cursor.fetchone()
 
                 if booking_result[0] > 0:
-                    return False, "Booking already exists for this time, please choose a different time"  # If booking exists
+                    return False, "Booking already exists for this user at this time, please choose a different time"  # If booking exists
 
                 return True, "Available, booking submitted"  # If available
 
@@ -240,11 +240,12 @@ def check_availability_endpoint():
         data = request.json
         date = data.get('date')
         time = data.get('time')
+        email = data.get('email')
         number_of_people = data.get('number_of_people')
         print('number_of_people', number_of_people)
 
         # Assuming check_availability returns a tuple (is_available, message)
-        is_available, message = check_availability(date, time, number_of_people)
+        is_available, message = check_availability(date, time, number_of_people, email)
 
         response = jsonify({'available': is_available, 'message': message})
         response.headers.add('Access-Control-Allow-Origin', '*')
