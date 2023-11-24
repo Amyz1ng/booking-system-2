@@ -122,7 +122,7 @@ async function book() {
 
 function logout() {
   localStorage.clear(); // Clear all items from localStorage
-  window.location.href = 'login.html'; // Redirect to the login page
+  window.location.href = 'index.html'; // Redirect to the login page
 }
 
 
@@ -171,4 +171,34 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  const signInBtn = document.getElementById("signInBtn");
+
+    // Function to update the link text based on loggedIn status
+    const updateLinkText = () => {
+        const loggedIn = localStorage.getItem("loggedIn");
+
+        if (loggedIn === "true") {
+            signInBtn.textContent = "Sign Out";
+            signInBtn.href = "/logout"; // Update href for sign-out action
+        } else {
+            signInBtn.textContent = "Sign In / Sign Up";
+            signInBtn.href = "/login"; // Update href for sign-in action
+        }
+    };
+
+    updateLinkText();
+
+    const toggleButton = document.getElementById("toggleButton");
+
+    toggleButton.addEventListener("click", function() {
+        const loggedIn = localStorage.getItem("loggedIn");
+
+        if (loggedIn === "true") {
+            logout();
+        }
+
+        // Update link text after toggling loggedIn status
+        updateLinkText();
+    });
 });
