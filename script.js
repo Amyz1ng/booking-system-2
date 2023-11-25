@@ -214,6 +214,12 @@ function registerUser(email, password) {
   });
 }
 
+function isValidEmail(email) {
+  // Basic email validation using a regular expression
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
 function logout() {
   localStorage.clear(); // Clear all items from localStorage
   window.location.href = 'index.html'; // Redirect to the login page
