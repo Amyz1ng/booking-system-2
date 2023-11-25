@@ -69,8 +69,9 @@ async function checkAuthentication() {
     if (currentPage !== 'login.html') {
       // Retrieve authentication status from localStorage
       const loggedIn = localStorage.getItem('loggedIn');
+      const isAdmin = localStorage.getItem('isAdmin');
 
-      if (!loggedIn) {
+      if (!loggedIn || isAdmin == false) {
         // User is not logged in, redirect to login page
         window.location.href = 'login.html'; // Change the URL to your login page
       }
