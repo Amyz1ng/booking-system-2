@@ -228,6 +228,28 @@ function logout() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+  let signInBtnWeb = document.getElementById("signInBtn");
+  let signInBtnMobile = document.getElementById("signInBtnMobile");
+
+  const registrationForm = document.getElementById('registrationForm');
+  if (registrationForm) {
+    registrationForm.removeEventListener('submit', handleRegistration);
+    registrationForm.addEventListener('submit', handleRegistration);
+  }
+  regForm.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevents the default form submission
+
+    // Fetch form data
+    const email = regForm.email.value;
+    const password = regForm.password.value;
+    const repeatPassword = regForm.repeatPassword.value;
+
+    if (validateForm(email, password, repeatPassword)) {
+      registerUser(email, password)
+      regForm.reset();
+    }
+  });
+
   const currentPage = window.location.pathname.split('/').pop();
   const email = localStorage.getItem("email");
   if (currentPage == 'contact.html' && email) {
@@ -277,26 +299,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-
-  let signInBtnWeb = document.getElementById("signInBtn");
-  let signInBtnMobile = document.getElementById("signInBtnMobile");
-
-  const regForm = document.getElementById('registrationForm');
-  regForm.addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevents the default form submission
-
-    // Fetch form data
-    const email = regForm.email.value;
-    const password = regForm.password.value;
-    const repeatPassword = regForm.repeatPassword.value;
-
-    if (validateForm(email, password, repeatPassword)) {
-      registerUser(email, password)
-      regForm.reset();
-    }
-  });
-
-
 
   // Function to update the link text based on loggedIn status
   const updateLinkText = () => {
