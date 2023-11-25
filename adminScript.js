@@ -73,7 +73,7 @@ async function checkAuthentication() {
       console.log('isAdmin', isAdmin)
       if (!loggedIn || isAdmin == 'false') {
         // User is not logged in, redirect to login page
-        window.location.href = 'login.html'; // Change the URL to your login page
+        window.location.href = 'contact.html'; // Change the URL to your login page
       }
     }
   } catch (error) {
