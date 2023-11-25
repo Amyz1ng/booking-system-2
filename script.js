@@ -186,6 +186,34 @@ async function book() {
     });
 }
 
+function registerUser(email, password) {
+  const requestData = {
+    email: email,
+    password: password
+  };
+
+  fetch('/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    alert("User has been registered!")
+    window.location.href = 'contact.html';
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
+}
+
 function logout() {
   localStorage.clear(); // Clear all items from localStorage
   window.location.href = 'index.html'; // Redirect to the login page
@@ -228,6 +256,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let signInBtnWeb = document.getElementById("signInBtn");
   let signInBtnMobile = document.getElementById("signInBtnMobile");
+
+  const regForm = document.getElementById('registrationForm');
+  regForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the default form submission
+
+    // Fetch form data
+    const email = regForm.email.value;
+    const password = regForm.password.value;
+    const repeatPassword = regForm.repeatPassword.value;
+
+    // Simple validation
+    if (!isValidEmail(email)) {
+        alert('Please enter a valid email address');
+        return; // Stops form submission
+    }
+
+    if (password.length < 6) {
+        alert('Password should be at least 6 characters long');
+        return; // Stops form submission
+    }
+
+    if (password !== repeatPassword) {
+        alert('Passwords do not match');
+        return; // Stops form submission
+    }
+
+    registerUser(email, password)
+
+    console.log('Email:', email);
+    console.log('Password:', password);
+    console.log('Repeat Password:', repeatPassword);
+    regForm.reset();
+});
+
 
 
   // Function to update the link text based on loggedIn status
