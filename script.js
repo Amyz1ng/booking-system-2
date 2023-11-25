@@ -192,7 +192,7 @@ function registerUser(email, password) {
     password: password
   };
 
-  fetch('/register', {
+  fetch('https://bookingsystem2-9ca46070b498.herokuapp.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
