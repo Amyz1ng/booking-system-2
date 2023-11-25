@@ -193,25 +193,25 @@ function registerUser(email, password) {
   };
 
   fetch('/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(requestData)
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    alert("User has been registered!")
-    window.location.href = 'contact.html';
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert("User has been registered!")
+      window.location.href = 'contact.html';
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
 }
 
 function isValidEmail(email) {
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('entered');
     getBookings(email);
   }
-  
+
   if (currentPage == 'contact.html') {
     checkAuthentication();
   }
@@ -244,6 +244,23 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       checkAvailability();
     });
+  }
+
+  function validateForm(email, password, repeatPassword) {
+    if (!isValidEmail(email)) {
+      alert('Please enter a valid email address');
+      return false;
+    }
+    if (password.length < 6) {
+      alert('Password should be at least 6 characters long');
+      return false;
+    }
+    if (password !== repeatPassword) {
+      alert('Passwords do not match');
+      return false;
+    }
+
+    return true; // All validations passed
   }
 
   const loginForm = document.getElementById('loginForm');
@@ -264,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let signInBtnMobile = document.getElementById("signInBtnMobile");
 
   const regForm = document.getElementById('registrationForm');
-  regForm.addEventListener('submit', function(event) {
+  regForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevents the default form submission
 
     // Fetch form data
@@ -272,29 +289,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const password = regForm.password.value;
     const repeatPassword = regForm.repeatPassword.value;
 
-    // Simple validation
-    if (!isValidEmail(email)) {
-        alert('Please enter a valid email address');
-        return; // Stops form submission
+    if (validateForm(email, password, repeatPassword)) {
+      registerUser(email, password)
+      regForm.reset();
     }
-
-    if (password.length < 6) {
-        alert('Password should be at least 6 characters long');
-        return; // Stops form submission
-    }
-
-    if (password !== repeatPassword) {
-        alert('Passwords do not match');
-        return; // Stops form submission
-    }
-
-    registerUser(email, password)
-
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Repeat Password:', repeatPassword);
-    regForm.reset();
-});
+  });
 
 
 
