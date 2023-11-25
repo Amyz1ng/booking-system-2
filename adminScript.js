@@ -79,7 +79,7 @@ async function checkAuthentication() {
   } catch (error) {
     console.error('There was a problem checking authentication:', error);
     // Handle error or redirect to login page if authentication check fails
-    window.location.href = 'login.html'; // Change the URL to your login page
+    window.location.href = 'contact.html'; // Change the URL to your login page
   }
 }
 
