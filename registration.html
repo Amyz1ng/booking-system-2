@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pizza-Berra</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+        integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
         type="text/css" />
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     <script src="https://kit.fontawesome.com/59e56de75d.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-
 </head>
+
 <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
                 <li class="active nav-item mr-2"><a class="nav-link" href="index.html">Home</a></li>
@@ -34,7 +35,42 @@
                 <a class="btn btn--cta btn--red" id="signInBtn">register</a>
             </div>
         </div>
-    </nav>
+    </nav> -->
+
+    <header>
+        <div class="row no-gutters">
+            <div class="col-md-12">
+                <div class="row no-gutters bg-color-name-title">
+                    <div class="col heading">
+                        <h1 class="name">Pizza-Berra</h1>
+                        <h2 class="title"> Make a reservation</h2>
+                    </div>
+                </div>
+                <nav class="navbar navbar-dark navbar-expand-sm">
+                    <a href="/" class="navbar-brand">Pizza-berra</a>
+
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span></button>
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="active nav-item mr-2"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="active nav-item mr-2"><a class="nav-link" href="menu.html">Menu</a></li>
+                            <li class="active nav-item mr-2"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item mr-2 d-block d-sm-none" id="signInBtnMobile"><a class="nav-link">Sign In
+                                    / Sign
+                                    Up</a></li>
+                        </ul>
+                    </div>
+                    <div class="d-none d-md-block">
+                        <p class="navbar-text my-auto mr-2"><i>Great food delivered to your door!</i></p>
+                        <a class="btn btn--cta btn--red" id="signInBtn">Sign In / Sign Up</a>
+                    </div>
+                </nav>
+    </header>
+
 
     <div class="modal" tabindex="-1" role="dialog" id="signUpModal">
         <div class="modal-dialog" role="document">
@@ -50,8 +86,10 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
@@ -59,7 +97,8 @@
                         </div>
                         <div class="form-group">
                             <label for="repeatPassword">Repeat Password</label>
-                            <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat Password">
+                            <input type="password" class="form-control" id="repeatPassword"
+                                placeholder="Repeat Password">
                         </div>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>
@@ -77,6 +116,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
     </script>
-   <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
