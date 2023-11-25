@@ -226,6 +226,23 @@ function logout() {
   window.location.href = 'index.html'; // Redirect to the login page
 }
 
+function validateForm(email, password, repeatPassword) {
+  if (!isValidEmail(email)) {
+    alert('Please enter a valid email address');
+    return false;
+  }
+  if (password.length < 6) {
+    alert('Password should be at least 6 characters long');
+    return false;
+  }
+  if (password !== repeatPassword) {
+    alert('Passwords do not match');
+    return false;
+  }
+
+  return true; // All validations passed
+}
+
 function handleRegistration(event) {
   event.preventDefault(); // Prevents the default form submission
 
@@ -267,23 +284,6 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       checkAvailability();
     });
-  }
-
-  function validateForm(email, password, repeatPassword) {
-    if (!isValidEmail(email)) {
-      alert('Please enter a valid email address');
-      return false;
-    }
-    if (password.length < 6) {
-      alert('Password should be at least 6 characters long');
-      return false;
-    }
-    if (password !== repeatPassword) {
-      alert('Passwords do not match');
-      return false;
-    }
-
-    return true; // All validations passed
   }
 
   const loginForm = document.getElementById('loginForm');
