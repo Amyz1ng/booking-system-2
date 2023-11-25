@@ -226,6 +226,19 @@ function logout() {
   window.location.href = 'index.html'; // Redirect to the login page
 }
 
+function handleRegistration(event) {
+  event.preventDefault(); // Prevents the default form submission
+
+  // Fetch form data
+  const email = registrationForm.email.value;
+  const password = registrationForm.password.value;
+  const repeatPassword = registrationForm.repeatPassword.value;
+
+  if (validateForm(email, password, repeatPassword)) {
+    registerUser(email, password)
+    registrationForm.reset();
+  }
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   let signInBtnWeb = document.getElementById("signInBtn");
@@ -236,19 +249,6 @@ document.addEventListener('DOMContentLoaded', function () {
     registrationForm.removeEventListener('submit', handleRegistration);
     registrationForm.addEventListener('submit', handleRegistration);
   }
-  regForm.addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevents the default form submission
-
-    // Fetch form data
-    const email = regForm.email.value;
-    const password = regForm.password.value;
-    const repeatPassword = regForm.repeatPassword.value;
-
-    if (validateForm(email, password, repeatPassword)) {
-      registerUser(email, password)
-      regForm.reset();
-    }
-  });
 
   const currentPage = window.location.pathname.split('/').pop();
   const email = localStorage.getItem("email");
