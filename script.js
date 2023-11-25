@@ -247,10 +247,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function validateForm(email, password, repeatPassword) {
-    if (!isValidEmail(email)) {
-      alert('Please enter a valid email address');
-      return false;
-    }
     if (password.length < 6) {
       alert('Password should be at least 6 characters long');
       return false;
