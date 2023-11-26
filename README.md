@@ -8,8 +8,15 @@ Whether it's to just come in and relax, have a pint or to come and enjoy a luxur
 Users of the website can find all the infomation they need to know about my restaurant, such as how to be in contact, opening times and days we operate, our social media for updates on specials and make reservations.
 
 ## Admin email/password
-To sign in as an adim one can use admin@gmail.com with the password -123
-a customer can register their own email and create their own passwords to access the booking system.
+To sign in as an Adim one can use admin@gmail.com with the password -123
+
+A customer can register their own email and create their own passwords to access the booking system.
+
+A customer can delete reservations and update reservations.
+
+The resurant can handle up to 20 bookings until it reaches max compatibility 
+
+
 
 # Responsive
 ![Screenshot 2023-11-24 161045](https://github.com/Amyz1ng/booking-system-2/assets/124196828/ab2042df-fea1-47a5-a2a7-7b2ebb295b78)
