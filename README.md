@@ -216,7 +216,7 @@ This site was deployed through GitHub Pages using the following steps:
 5. Open Git Bash on your device.
 6. Change the current working directory to the location where you want the cloned directory.
 7. Type git clone in the CLI and then paste the URL you copied earlier. This is what it should look like:
-- $ git clone https://github.com/Amyz1ng/booking-system-2-.git  
+- $ git clone https://github.com/Amyz1ng/booking-system-2 
 8. Press Enter to create your local clone.
 
 # Credits
