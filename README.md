@@ -176,6 +176,13 @@ I tested on a few decides I have at home, as listed below:
 
 #### AmIResponsive
 When there were devices/browsers that I didn't have access to, I used https://ui.dev/amiresponsive to make sure that the site was responsive.
+## Mobile view 
+![mobile - main](https://github.com/Amyz1ng/booking-system-2/assets/124196828/725925bc-eeb4-498b-b1ff-ebe1f37d12d6)
+![mobile-menu](https://github.com/Amyz1ng/booking-system-2/assets/124196828/8a69fcc5-807e-4943-ba74-696b04fc016b)
+![mobile- contact-page](https://github.com/Amyz1ng/booking-system-2/assets/124196828/56c66e3c-9095-4039-b85c-a365754532cd)
+
+
+
 
 # Deployment
 ## Deployment through GitHub Pages
