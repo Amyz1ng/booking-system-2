@@ -5,7 +5,7 @@ This website I have created is for a restaurant of my own creation, i used the m
 I have made it for a wide target audience of food lovers who also enjoy drinking, I wanted to encorporate a mix and match idea so that it would suite everyone's satisfaction.
 Whether it's to just come in and relax, have a pint or to come and enjoy a luxurios meal!
 
-Users of the website can find all the infomation they need to know about my restaurant, such as how to be in contact, opening times and days we operate, our social media for updates on specials and make reservations.
+Users of the website can find all the infomation they need to know about my restaurant, such as how to be in contact, our social media for updates on specials and make reservations.
 
 ## Admin email/password
 To sign in as an Adim one can use admin@gmail.com with the password -123
@@ -107,7 +107,7 @@ Navigation on Social media links (Facebook, Twitter, Instagram) which will open 
 - [CSS](https://en.wikipedia.org/wiki/CSS)
 - [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 - [python](https://www.python.org/)
-- [Dajango](https://www.djangoproject.com/)
+
 
 ## Frameworks, Libraries & Programs Used  
 - Font Awesome used for icons.
@@ -188,12 +188,11 @@ I tested on a few decides I have at home, as listed below:
 
 #### AmIResponsive
 When there were devices/browsers that I didn't have access to, I used https://ui.dev/amiresponsive to make sure that the site was responsive.
+
 ## Mobile view 
 ![mobile - main](https://github.com/Amyz1ng/booking-system-2/assets/124196828/725925bc-eeb4-498b-b1ff-ebe1f37d12d6)
 ![mobile-menu](https://github.com/Amyz1ng/booking-system-2/assets/124196828/8a69fcc5-807e-4943-ba74-696b04fc016b)
 ![mobile- contact-page](https://github.com/Amyz1ng/booking-system-2/assets/124196828/56c66e3c-9095-4039-b85c-a365754532cd)
-
-
 
 
 # Deployment
