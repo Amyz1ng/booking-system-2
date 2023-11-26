@@ -148,7 +148,7 @@ The welcome area on the hompage looks good on all devices. This is the main intr
 
 As a user, I want to be able to access information about the various food items available to me.
 
-The menu has their own page. 
+The menu has their own page. As well as a downloadable link in the footer which will download the entire menu
 As a user, I want to be able to contact someone to place a food order or make a reservation.
 
 The reservation form allows the user to select which day, time and how many people you would like to book for. 
@@ -176,6 +176,13 @@ I tested on a few decides I have at home, as listed below:
 
 #### AmIResponsive
 When there were devices/browsers that I didn't have access to, I used https://ui.dev/amiresponsive to make sure that the site was responsive.
+## Mobile view 
+![mobile - main](https://github.com/Amyz1ng/booking-system-2/assets/124196828/725925bc-eeb4-498b-b1ff-ebe1f37d12d6)
+![mobile-menu](https://github.com/Amyz1ng/booking-system-2/assets/124196828/8a69fcc5-807e-4943-ba74-696b04fc016b)
+![mobile- contact-page](https://github.com/Amyz1ng/booking-system-2/assets/124196828/56c66e3c-9095-4039-b85c-a365754532cd)
+
+
+
 
 # Deployment
 ## Deployment through GitHub Pages
@@ -204,7 +211,7 @@ This site was deployed through GitHub Pages using the following steps:
 # Credits
 
 ## CONTENT
-The code for the Navigation bar was taken from the Resume project The code to make social media links was taken from Love Running project.
+The code for the Navigation bar was taken from the bootsrap project The code to make social media links was taken from resume project.
 
 
 ## MEDIA
