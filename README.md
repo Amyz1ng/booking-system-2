@@ -148,7 +148,7 @@ The welcome area on the hompage looks good on all devices. This is the main intr
 
 As a user, I want to be able to access information about the various food items available to me.
 
-The menu has their own page. 
+The menu has their own page. As well as a downloadable link in the footer which will download the entire menu
 As a user, I want to be able to contact someone to place a food order or make a reservation.
 
 The reservation form allows the user to select which day, time and how many people you would like to book for. 
@@ -204,7 +204,7 @@ This site was deployed through GitHub Pages using the following steps:
 # Credits
 
 ## CONTENT
-The code for the Navigation bar was taken from the Resume project The code to make social media links was taken from Love Running project.
+The code for the Navigation bar was taken from the bootsrap project The code to make social media links was taken from resume project.
 
 
 ## MEDIA
